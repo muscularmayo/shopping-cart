@@ -1,0 +1,33 @@
+.nav-bar {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  color: black;
+  margin: 0 auto;
+  background-color:white;
+  top: 0;
+  left: 0;
+}
+
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
