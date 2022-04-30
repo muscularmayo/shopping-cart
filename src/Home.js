@@ -1,9 +1,11 @@
 import './home.css';
+import Catalog from './Catalog.js'
 
 const Home = () => {
   return (
     <div className="home">
-      <h1>Home Page</h1>
+      <h1>Mayo's Shop</h1>
+      <Catalog />
     </div>
   );
 }
