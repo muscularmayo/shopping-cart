@@ -30,19 +30,14 @@ const Catalog = () => {
 
 
   const setShopInfo = () => {
-    if(shopData !== []) {
-      return shopData.map((item) => {
-        return (
-          <div>
-            {item.title + item.price + item.description}
-          </div>
-        )
-      })
-    } else {
+    return shopData.map((item) => {
       return (
-        <div>loading...</div>
+        <div>
+          {item.title + item.price + item.description}
+          <img src={item.image} alt={item.image}/>
+        </div>
       )
-    }
+    })
 
   }
 
