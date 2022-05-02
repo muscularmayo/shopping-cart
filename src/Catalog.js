@@ -34,12 +34,13 @@ const Catalog = (props) => {
         )
       })}
       <Routes>
-        {props.shopArray.map((item, index) => {
-          let path = `/shop/${index}`
-          return (
-            <Route path={path} element={<ExpandedShopItem item={item}/>}/>
-          )
-        })}
+        <Route path="/shop/0" element={<ExpandedShopItem item={props.shopArray[0]} />} />
+         {/* {props.shopArray.map((item, index) => {
+           let path = `/shop/${index}`
+           return (
+             <Route path={path} element={<ExpandedShopItem item={item}/>}/>
+           )
+         })} */}
       </Routes>
 
     </div>
