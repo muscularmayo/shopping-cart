@@ -2,7 +2,6 @@ import './sidebar.css';
 import { useState, useEffect } from 'react';
 
 const SideBar = (props) => {
-  const [currentFilter, setCurrentFilter] = useState('')
   const [shopCategories, setShopCategories] = useState([])
 
   useEffect(() => {

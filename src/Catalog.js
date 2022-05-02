@@ -7,6 +7,7 @@ import SideBar from './SideBar.js'
 
 const Catalog = () => {
   const [shopData, setShopData] = useState([])
+  const [currentFilter, setCurrentFilter] = useState('')
   // useEffect(() => {
   //   async function fetchData() {
   //     // You can await here
@@ -31,15 +32,21 @@ const Catalog = () => {
     fetchData();
   }, [])
 
+  const changeCurrentFilter = () => {
+
+  }
+
 
   const setShopInfo = () => {
     return shopData.map((item) => {
+      const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
+
       return (
         <ShopItem
           key={item.id}
           name={item.title}
-          price={item.price}
-          description={item.description}
+          price={'$' + item.price.toFixed(2)}
+          description={description}
           img={item.image}
           category={item.category}
           rating={item.rating}
