@@ -14,7 +14,7 @@ const ExpandedShopItem = (props) => {
         {props.item.description}
       </div>
       <div className="expanded-item-rating">
-        {props.item.rating.rate + ' with ' + props.item.rating.count}
+        {props.item.rating.rate + ' stars with ' + props.item.rating.count + ' reviews.'}
       </div>
   </div>
   );
