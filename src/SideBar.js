@@ -10,7 +10,7 @@ const SideBar = (props) => {
 
   return (
     <div className="side-bar">
-      <h4>Side Bar</h4>
+      <h4>Categories</h4>
       <ul>
         {shopCategories.map((category) => {
           return (
@@ -19,6 +19,12 @@ const SideBar = (props) => {
             </li>
           )
         })}
+      </ul>
+      <h4>Prices</h4>
+      <ul>
+        <li>$0-$50</li>
+        <li>$50.01-$150</li>
+        <li>$150+</li>
       </ul>
     </div>
   );

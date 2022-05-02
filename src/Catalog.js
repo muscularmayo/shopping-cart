@@ -1,6 +1,7 @@
 import './catalog.css';
 import ShopItem from './ShopItem.js'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'
+import ExpandedShopItem from './ExpandedShopItem.js'
 
 
 const Catalog = (props) => {
@@ -22,6 +23,7 @@ const Catalog = (props) => {
         return (
           <ShopItem
             key={item.id}
+            index={item.id-1}
             name={item.name}
             price={item.price}
             description={item.description}
@@ -31,6 +33,15 @@ const Catalog = (props) => {
           />
         )
       })}
+      <Routes>
+        {props.shopArray.map((item, index) => {
+          let path = `/shop/${index}`
+          return (
+            <Route path={path} element={<ExpandedShopItem item={item}/>}/>
+          )
+        })}
+      </Routes>
+
     </div>
   );
 }
