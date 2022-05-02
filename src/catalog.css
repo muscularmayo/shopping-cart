@@ -1,14 +1,9 @@
-.shop-items-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-
-}
-
-.shop-items-wrapper > div {
-  flex: 1 1 200px;
-}
 
 .catalog {
-  display: grid;
-  grid-template-columns: 2fr 9fr;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.catalog > div {
+  flex: 1 1 200px;
 }

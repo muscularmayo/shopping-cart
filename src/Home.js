@@ -1,5 +1,4 @@
 import './home.css';
-import Catalog from './Catalog.js'
 
 const Home = () => {
   return (
