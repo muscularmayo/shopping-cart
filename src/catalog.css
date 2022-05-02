@@ -1,0 +1,9 @@
+.shop-items-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.shop-items-wrapper > div {
+  flex: 1 1 200px;
+}

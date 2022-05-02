@@ -1,6 +1,7 @@
 import './catalog.css';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
+import ShopItem from './ShopItem.js'
 
 const Catalog = () => {
   const [shopData, setShopData] = useState([])
@@ -32,10 +33,15 @@ const Catalog = () => {
   const setShopInfo = () => {
     return shopData.map((item) => {
       return (
-        <div>
-          {item.title + item.price + item.description}
-          <img src={item.image} alt={item.image}/>
-        </div>
+        <ShopItem
+          key={item.id}
+          name={item.title}
+          price={item.price}
+          description={item.description}
+          img={item.image}
+          category={item.category}
+          rating={item.rating}
+        />
       )
     })
 
@@ -43,8 +49,8 @@ const Catalog = () => {
 
   return (
     <div className="catalog">
-      <h3>Catalog</h3>
-      <div>
+      <h1>Shop</h1>
+      <div className="shop-items-wrapper">
         {setShopInfo()}
       </div>
     </div>
