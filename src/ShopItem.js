@@ -4,9 +4,15 @@ const ShopItem = (props) => {
   return (
     <div className="shop-item">
       <img className="shop-item-image" src={props.img} alt={props.img}/>
-      <p>
-        {props.name + props.price + props.description + props.category}
-      </p>
+      <div className="item-title">
+        {props.name}
+      </div>
+      <div className="item-price">
+        {props.price}
+      </div>
+      <div className="item-description">
+        {props.description}
+      </div>
   </div>
   );
 }

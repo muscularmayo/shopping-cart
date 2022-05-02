@@ -5,8 +5,7 @@ const About = () => {
     <div className="about">
       <h1>About</h1>
       <p>
-      Here at MuscularMayo's Mayo Market, we pride ourselves on providing the creamiest, most delicious mayonnaise that the
-      world has ever seen.
+      Here at MuscularMayo's Mayo Market, we don't actually sell mayo, we sell shirts and other normal things.
       </p>
     </div>
   );

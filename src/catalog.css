@@ -7,3 +7,8 @@
 .shop-items-wrapper > div {
   flex: 1 1 200px;
 }
+
+.catalog {
+  display: grid;
+  grid-template-columns: 2fr 9fr;
+}

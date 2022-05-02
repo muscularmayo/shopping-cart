@@ -1,9 +1,26 @@
 import './sidebar.css';
+import { useState, useEffect } from 'react';
 
-const SideBar = () => {
+const SideBar = (props) => {
+  const [currentFilter, setCurrentFilter] = useState('')
+  const [shopCategories, setShopCategories] = useState([])
+
+  useEffect(() => {
+    setShopCategories(props.categories)
+  },[props.categories])
+
   return (
     <div className="side-bar">
-      <h1>Side Bar</h1>
+      <h4>Side Bar</h4>
+      <ul>
+        {shopCategories.map((category) => {
+          return (
+            <li key={category}>
+              {category}
+            </li>
+          )
+        })}
+      </ul>
     </div>
   );
 }

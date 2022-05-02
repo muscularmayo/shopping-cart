@@ -2,6 +2,8 @@ import './catalog.css';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 import ShopItem from './ShopItem.js'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SideBar from './SideBar.js'
 
 const Catalog = () => {
   const [shopData, setShopData] = useState([])
@@ -44,14 +46,27 @@ const Catalog = () => {
         />
       )
     })
-
   }
 
+  const setSideBarInfo = () => {
+    let categories = shopData.map((item) => {
+      return item.category;
+    })
+    categories = new Set(categories)
+    categories = [...categories]
+    return categories;
+  }
+
+
+
   return (
-    <div className="catalog">
+    <div>
       <h1>Shop</h1>
-      <div className="shop-items-wrapper">
-        {setShopInfo()}
+      <div className="catalog">
+        <SideBar categories={setSideBarInfo()}/>
+        <div className="shop-items-wrapper">
+          {setShopInfo()}
+        </div>
       </div>
     </div>
   );
