@@ -6,7 +6,7 @@ import Catalog from './Catalog.js'
 import { Routes, Route } from 'react-router-dom'
 import ExpandedShopItem from './ExpandedShopItem.js'
 
-const Shop = () => {
+const Shop = (props) => {
   const [shopData, setShopData] = useState([])
   const [currentFilter, setCurrentFilter] = useState('')
   // useEffect(() => {
@@ -17,46 +17,46 @@ const Shop = () => {
   //   }
   //   fetchData();
   // }, []); // Or [] if effect doesn't need props or state
-  async function fetchData () {
-    axios.get('https://fakestoreapi.com/products')
-      .then((response) => {
-        return response.data;
-      })
-      .then((data) => {
-        console.log(data)
-        return data.map((item) => {
-          const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
-
-          // return (
-          //   <ShopItem
-          //     key={item.id}
-          //     name={item.title}
-          //     price={'$' + item.price.toFixed(2)}
-          //     description={description}
-          //     img={item.image}
-          //     category={item.category}
-          //     rating={item.rating}
-          //   />
-          // )
-          return {
-            id: item.id,
-            name: item.title,
-            price: '$' + item.price.toFixed(2),
-            description: description,
-            img: item.image,
-            category: item.category,
-            rating: item.rating,
-          }
-        })
-      })
-      .then((modifiedData) => {
-        setShopData(modifiedData)
-        console.log(shopData)
-      })
-      .catch(error => console.error(`Error: ${error}`))
-  }
 
   useEffect(() => {
+    async function fetchData () {
+      axios.get('https://fakestoreapi.com/products')
+        .then((response) => {
+          return response.data;
+        })
+        .then((data) => {
+          console.log(data)
+          return data.map((item) => {
+            const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
+
+            // return (
+            //   <ShopItem
+            //     key={item.id}
+            //     name={item.title}
+            //     price={'$' + item.price.toFixed(2)}
+            //     description={description}
+            //     img={item.image}
+            //     category={item.category}
+            //     rating={item.rating}
+            //   />
+            // )
+            return {
+              id: item.id,
+              name: item.title,
+              price: '$' + item.price.toFixed(2),
+              description: description,
+              img: item.image,
+              category: item.category,
+              rating: item.rating,
+            }
+          })
+        })
+        .then((modifiedData) => {
+          setShopData(modifiedData)
+        })
+        .catch(error => console.error(`Error: ${error}`))
+    }
+
     fetchData();
   }, [])
 
@@ -119,9 +119,9 @@ const Shop = () => {
         {/* <Route path="/shop/:id" element={<ExpandedShopItem />} /> */}
         {/* <Route path="/shop/0" element={<ExpandedShopItem item={props.shopArray[0]} />} /> */}
          {shopData.map((item, index) => {
-           let path = `${index}`
+           let path = `:${index}`
            return (
-             <Route exact path={path} element={<ExpandedShopItem item={item}/>}/>
+             <Route path={path} element={<ExpandedShopItem item={item}/>}/>
            )
          })}
       </Routes>
