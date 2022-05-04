@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react';
 import SideBar from './SideBar.js'
 import Catalog from './Catalog.js'
+import { Routes, Route } from 'react-router-dom'
+import ExpandedShopItem from './ExpandedShopItem.js'
 
 const Shop = () => {
   const [shopData, setShopData] = useState([])
@@ -22,7 +24,34 @@ const Shop = () => {
       })
       .then((data) => {
         console.log(data)
-        setShopData(data)
+        return data.map((item) => {
+          const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
+
+          // return (
+          //   <ShopItem
+          //     key={item.id}
+          //     name={item.title}
+          //     price={'$' + item.price.toFixed(2)}
+          //     description={description}
+          //     img={item.image}
+          //     category={item.category}
+          //     rating={item.rating}
+          //   />
+          // )
+          return {
+            id: item.id,
+            name: item.title,
+            price: '$' + item.price.toFixed(2),
+            description: description,
+            img: item.image,
+            category: item.category,
+            rating: item.rating,
+          }
+        })
+      })
+      .then((modifiedData) => {
+        setShopData(modifiedData)
+        console.log(shopData)
       })
       .catch(error => console.error(`Error: ${error}`))
   }
@@ -35,33 +64,35 @@ const Shop = () => {
 
   }
 
+  // changed it so this function happens in my original fetchData when page renders, now I can pass the info down
+  // const setShopInfo = () => {
+  //   return shopData.map((item) => {
+  //     const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
 
-  const setShopInfo = () => {
-    return shopData.map((item) => {
-      const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
+  //     // return (
+  //     //   <ShopItem
+  //     //     key={item.id}
+  //     //     name={item.title}
+  //     //     price={'$' + item.price.toFixed(2)}
+  //     //     description={description}
+  //     //     img={item.image}
+  //     //     category={item.category}
+  //     //     rating={item.rating}
+  //     //   />
+  //     // )
+  //     return {
+  //       id: item.id,
+  //       name: item.title,
+  //       price: '$' + item.price.toFixed(2),
+  //       description: description,
+  //       img: item.image,
+  //       category: item.category,
+  //       rating: item.rating,
+  //     }
+  //   })
 
-      // return (
-      //   <ShopItem
-      //     key={item.id}
-      //     name={item.title}
-      //     price={'$' + item.price.toFixed(2)}
-      //     description={description}
-      //     img={item.image}
-      //     category={item.category}
-      //     rating={item.rating}
-      //   />
-      // )
-      return {
-        id: item.id,
-        name: item.title,
-        price: '$' + item.price.toFixed(2),
-        description: description,
-        img: item.image,
-        category: item.category,
-        rating: item.rating,
-      }
-    })
-  }
+    //setShopData(editedShopInfo)
+  // }
 
   const setSideBarInfo = () => {
     let categories = shopData.map((item) => {
@@ -82,8 +113,18 @@ const Shop = () => {
         {/* <div className="shop-items-wrapper">
           {setShopInfo()}
         </div> */}
-        <Catalog shopArray={setShopInfo()}/>
+        <Catalog shopArray={shopData}/>
       </div>
+      <Routes>
+        {/* <Route path="/shop/:id" element={<ExpandedShopItem />} /> */}
+        {/* <Route path="/shop/0" element={<ExpandedShopItem item={props.shopArray[0]} />} /> */}
+         {shopData.map((item, index) => {
+           let path = `${index}`
+           return (
+             <Route exact path={path} element={<ExpandedShopItem item={item}/>}/>
+           )
+         })}
+      </Routes>
     </div>
   );
 }

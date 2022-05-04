@@ -5,6 +5,7 @@ import NavBar from './NavBar.js'
 import Home from './Home.js'
 import Shop from './Shop.js'
 import About from './About.js'
+import ExpandedShopItem from './ExpandedShopItem.js'
 
 const RouteSwitch = () => {
   return (
