@@ -115,16 +115,6 @@ const Shop = (props) => {
         </div> */}
         <Catalog shopArray={shopData}/>
       </div>
-      <Routes>
-        {/* <Route path="/shop/:id" element={<ExpandedShopItem />} /> */}
-        {/* <Route path="/shop/0" element={<ExpandedShopItem item={props.shopArray[0]} />} /> */}
-         {shopData.map((item, index) => {
-           let path = `:${index}`
-           return (
-             <Route path={path} element={<ExpandedShopItem item={item}/>}/>
-           )
-         })}
-      </Routes>
     </div>
   );
 }
