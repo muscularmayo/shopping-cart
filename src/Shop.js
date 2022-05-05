@@ -19,42 +19,73 @@ const Shop = (props) => {
   // }, []); // Or [] if effect doesn't need props or state
 
   useEffect(() => {
-    async function fetchData () {
-      axios.get('https://fakestoreapi.com/products')
-        .then((response) => {
-          return response.data;
-        })
-        .then((data) => {
-          console.log(data)
-          return data.map((item) => {
-            const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
+    // function fetchData () {
+    //   axios.get('https://fakestoreapi.com/products')
+    //     .then((response) => {
+    //       return response.data;
+    //     })
+    //     .then((data) => {
+    //       console.log(data)
+        //   return data.map((item) => {
+        //     const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
 
-            // return (
-            //   <ShopItem
-            //     key={item.id}
-            //     name={item.title}
-            //     price={'$' + item.price.toFixed(2)}
-            //     description={description}
-            //     img={item.image}
-            //     category={item.category}
-            //     rating={item.rating}
-            //   />
-            // )
-            return {
-              id: item.id,
-              name: item.title,
-              price: '$' + item.price.toFixed(2),
-              description: description,
-              img: item.image,
-              category: item.category,
-              rating: item.rating,
-            }
-          })
-        })
-        .then((modifiedData) => {
-          setShopData(modifiedData)
-        })
-        .catch(error => console.error(`Error: ${error}`))
+        //     // return (
+        //     //   <ShopItem
+        //     //     key={item.id}
+        //     //     name={item.title}
+        //     //     price={'$' + item.price.toFixed(2)}
+        //     //     description={description}
+        //     //     img={item.image}
+        //     //     category={item.category}
+        //     //     rating={item.rating}
+        //     //   />
+        //     // )
+        //     return {
+        //       id: item.id,
+        //       name: item.title,
+        //       price: '$' + item.price.toFixed(2),
+        //       description: description,
+        //       img: item.image,
+        //       category: item.category,
+        //       rating: item.rating,
+        //     }
+        //   })
+        // })
+    //     .then((modifiedData) => {
+    //       setShopData(modifiedData)
+    //     })
+    //     .catch(error => console.error(`Error: ${error}`))
+    // }
+
+    async function fetchData () {
+      const response = await axios.get('https://fakestoreapi.com/products');
+      const data = response.data;
+
+      const shopArray = data.map((item) => {
+        const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
+
+        // return (
+        //   <ShopItem
+        //     key={item.id}
+        //     name={item.title}
+        //     price={'$' + item.price.toFixed(2)}
+        //     description={description}
+        //     img={item.image}
+        //     category={item.category}
+        //     rating={item.rating}
+        //   />
+        // )
+        return {
+          id: item.id,
+          name: item.title,
+          price: '$' + item.price.toFixed(2),
+          description: description,
+          img: item.image,
+          category: item.category,
+          rating: item.rating,
+        }
+      })
+      setShopData(shopArray)
     }
 
     fetchData();
@@ -115,6 +146,16 @@ const Shop = (props) => {
         </div> */}
         <Catalog shopArray={shopData}/>
       </div>
+      <Routes>
+        {/* <Route path="/shop/:id" element={<ExpandedShopItem />} /> */}
+        {/* <Route path="/shop/0" element={<ExpandedShopItem item={props.shopArray[0]} />} /> */}
+         {shopData.map((item, index) => {
+           let path = `${index}`
+           return (
+             <Route path={path} element={<ExpandedShopItem item={item}/>}/>
+           )
+         })}
+      </Routes>
     </div>
   );
 }
