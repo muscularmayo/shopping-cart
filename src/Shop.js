@@ -1,41 +1,50 @@
 import './shop.css';
 import axios from 'axios'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import SideBar from './SideBar.js'
 import Catalog from './Catalog.js'
 import { Routes, Route } from 'react-router-dom'
 import ExpandedShopItem from './ExpandedShopItem.js'
 import LoadingScreen from './LoadingScreen.js'
+import { useSelector, useDispatch } from 'react-redux'
+import store from './store';
 
 const Shop = (props) => {
   const [shopData, setShopData] = useState([])
   const [currentFilter, setCurrentFilter] = useState('')
   const [loading, setLoading] = useState(true)
 
+  const dispatch = useDispatch();
+  const shop = useSelector(state => state.shopData)
+
   useEffect(() => {
     async function fetchData () {
-      const response = await axios.get('https://fakestoreapi.com/products');
-      const data = response.data;
+      if (shopData.length === 0) {
+        const response = await axios.get('https://fakestoreapi.com/products');
+        const data = response.data;
 
-      const shopArray = data.map((item) => {
-        const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
+        const shopArray = data.map((item) => {
+          const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
 
-        return {
-          id: item.id,
-          name: item.title,
-          price: '$' + item.price.toFixed(2),
-          description: description,
-          img: item.image,
-          category: item.category,
-          rating: item.rating,
-        }
-      })
-      setShopData(shopArray)
-      setLoading(false)
+          return {
+            id: item.id,
+            name: item.title,
+            price: '$' + item.price.toFixed(2),
+            description: description,
+            img: item.image,
+            category: item.category,
+            rating: item.rating,
+          }
+        })
+        setShopData(shopArray)
+        setLoading(false)
+      } else {
+        return;
+      }
     }
 
     fetchData();
-  }, [shopData])
+  }, [])
 
   const changeCurrentFilter = () => {
 
