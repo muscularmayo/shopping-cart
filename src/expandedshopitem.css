@@ -1,0 +1,16 @@
+.modal {
+  display: block;
+  position:fixed;
+  z-index: 1;
+  background-color: rbga(0, 0, 0, 0.25);
+}
+
+.modal-content {
+  background-color: white;
+  position: absolute;
+}
+
+.expanded-shop-item-image {
+  height: 90%;
+  width: 90%;
+}

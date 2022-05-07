@@ -35,7 +35,7 @@ const Shop = (props) => {
     }
 
     fetchData();
-  }, [])
+  }, [shopData])
 
   const changeCurrentFilter = () => {
 
