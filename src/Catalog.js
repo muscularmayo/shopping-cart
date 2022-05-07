@@ -5,17 +5,6 @@ import ExpandedShopItem from './ExpandedShopItem.js'
 
 
 const Catalog = (props) => {
-  // return (
-  //   <ShopItem
-  //     key={item.id}
-  //     name={item.title}
-      // price={'$' + item.price.toFixed(2)}
-      // description={description}
-      // img={item.image}
-      // category={item.category}
-      // rating={item.rating}
-  //   />
-  // )
 
   return (
     <div className="catalog">

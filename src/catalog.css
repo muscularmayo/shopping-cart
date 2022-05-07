@@ -2,8 +2,9 @@
 .catalog {
   display: flex;
   flex-wrap: wrap;
+  justify-content:left;
 }
 
 .catalog > div {
-  flex: 1 1 200px;
+  flex: 0 0 200px;
 }
