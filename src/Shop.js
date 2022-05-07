@@ -16,6 +16,7 @@ const Shop = (props) => {
 
   const dispatch = useDispatch();
   const shop = useSelector(state => state.shopData)
+  console.log(shop.shopArray)
 
   useEffect(() => {
     async function fetchData () {
