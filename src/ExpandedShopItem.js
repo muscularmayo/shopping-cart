@@ -1,6 +1,9 @@
 import './expandedshopitem.css';
 
 const ExpandedShopItem = (props) => {
+
+
+
   return (
     <div className="expanded-shop-item">
       <img className="expanded-shop-item-image" src={props.item.img} alt={props.item.img}/>
