@@ -63,7 +63,7 @@ const Shop = (props) => {
     // }
 
     // fetchData();
-  }, )
+  }, [dispatch, shop.filter, shop.shopArray, shopStatus])
 
   const changeCurrentFilter = () => {
 

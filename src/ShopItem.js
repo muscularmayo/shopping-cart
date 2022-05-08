@@ -1,9 +1,10 @@
 import './shopitem.css';
+import { Link } from 'react-router-dom'
 
 const ShopItem = (props) => {
   return (
     <div className="shop-item">
-      <a href={'/shop/' + props.index}>
+      <Link to={'/shop/' + props.index}>
         <img className="shop-item-image" src={props.img} alt={props.img}/>
         <div className="item-title">
           {props.name}
@@ -14,7 +15,7 @@ const ShopItem = (props) => {
         {/* <div className="item-description">
           {props.description}
         </div> */}
-      </a>
+      </Link>
   </div>
   );
 }

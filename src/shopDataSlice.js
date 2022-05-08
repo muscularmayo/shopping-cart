@@ -47,11 +47,12 @@ export const { setShopData } = shopDataSlice.actions
 
 //   return async (dispatch, getState) => {
 
-//   }
+//   } state = {shopData: {},}
 // }
 
 
 export const fetchShopData = createAsyncThunk('shopData/fetchShopData', async () => {
+  console.log('fetching...')
   const response = await axios.get('https://fakestoreapi.com/products')
   const data = response.data;
 
