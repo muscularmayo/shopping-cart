@@ -20,9 +20,8 @@ const Shop = (props) => {
   const shop = useSelector(state => state.shopData) //it looks at all of redux state and pulls out the shopData one.. YES
   const shopStatus = useSelector(state => state.shopData.status)
   const error = useSelector(state => state.shopData.error)
-  const today = new Date();
-  const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  console.log(shop, shopStatus, time, error) //initial state {shopArray, status, error, filter}
+
+  console.log(shop, shopStatus, error) //initial state {shopArray, status, error, filter}
 
   useEffect(() => {
     if (shopStatus === 'idle') {
@@ -33,36 +32,6 @@ const Shop = (props) => {
       setCurrentFilter(shop.filter)
     }
 
-
-
-
-    // async function fetchData () {
-    //   if (shopData.length === 0) {
-    //     const response = await axios.get('https://fakestoreapi.com/products');
-    //     const data = response.data;
-    //     console.log(data)
-
-    //     const shopArray = data.map((item) => {
-    //       const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
-
-    //       return {
-    //         id: item.id,
-    //         name: item.title,
-    //         price: '$' + item.price.toFixed(2),
-    //         description: description,
-    //         img: item.image,
-    //         category: item.category,
-    //         rating: item.rating,
-    //       }
-    //     })
-    //     setShopData(shopArray)
-    //     setLoading(false)
-    //   } else {
-    //     return;
-    //   }
-    // }
-
-    // fetchData();
   }, [dispatch, shop.filter, shop.shopArray, shopStatus])
 
   const changeCurrentFilter = () => {
