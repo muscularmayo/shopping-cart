@@ -17,7 +17,7 @@ export const shopDataSlice = createSlice({
       // immutable state based off those changes
 
 
-      state.shopArray = action.payload.shopArray //possibly...
+      state.shopArray = action.payload //possibly...
 
 
       }

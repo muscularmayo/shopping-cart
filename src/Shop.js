@@ -6,6 +6,7 @@ import Catalog from './Catalog.js'
 import { Routes, Route } from 'react-router-dom'
 import ExpandedShopItem from './ExpandedShopItem.js'
 import LoadingScreen from './LoadingScreen.js'
+
 import { useSelector, useDispatch } from 'react-redux'
 import store from './store';
 import { fetchShopData } from './shopDataSlice.js'
@@ -18,9 +19,10 @@ const Shop = (props) => {
   const dispatch = useDispatch();
   const shop = useSelector(state => state.shopData) //it looks at all of redux state and pulls out the shopData one.. YES
   const shopStatus = useSelector(state => state.shopData.status)
+  const error = useSelector(state => state.shopData.error)
   const today = new Date();
   const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  console.log(shop, shopStatus, time) //initial state {shopArray, status, error, filter}
+  console.log(shop, shopStatus, time, error) //initial state {shopArray, status, error, filter}
 
   useEffect(() => {
     if (shopStatus === 'idle') {
@@ -119,16 +121,16 @@ const Shop = (props) => {
             {setShopInfo()}
           </div> */}
           <Catalog shopArray={shop.shopArray}/>
-          <Routes>
+          {/* <Routes> */}
             {/* <Route path="/shop/:id" element={<ExpandedShopItem />} /> */}
             {/* <Route path="/shop/0" element={<ExpandedShopItem item={props.shopArray[0]} />} /> */}
-            {shop.shopArray.map((item, index) => {
+            {/* {shop.shopArray.map((item, index) => {
               let path = `${index}`
               return (
                 <Route path={path} element={<ExpandedShopItem item={item}/>}/>
               )
-            })}
-          </Routes>
+            })} */}
+          {/* </Routes> */}
           </div>
       ) : (
         <LoadingScreen />

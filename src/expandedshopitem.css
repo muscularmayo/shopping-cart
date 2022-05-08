@@ -1,5 +1,5 @@
 .modal {
-  display: none;
+  display: block;
   position:fixed;
   z-index: 1;
   background-color: rbga(0, 0, 0, 0.25);
