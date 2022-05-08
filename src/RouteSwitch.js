@@ -17,24 +17,28 @@ const RouteSwitch = () => {
   const shop = useSelector(state => state.shopData)
   console.log(shop)
 
-  return (
+
+  const x = (
     <BrowserRouter>
       <NavBar />
       <Routes>
         <Route path="/shoppingcart" element={<ShoppingCart />} />
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
-        {/* <Route path="/shop/:id" element={<ExpandedShopItem />} /> */}
-        {shop.shopArray.map((item, index) => {
-              let path = `/shop/:${index}`
-              return (
-                <Route path={path} element={<ExpandedShopItem item={item}/>}/>
-              )
-            })}
+        <Route path="/shop/:id" element={<ExpandedShopItem />} />
+
+        {/* {shop.shopArray.map((item, index) => {
+          let path = `/shop/:${index}`
+          return (
+            <Route path={path} element={<ExpandedShopItem item={item}/>}/>
+          )
+        })} */}
         <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   )
+  console.log('x: ', x)
+  return x;
 }
 
 export default RouteSwitch;
