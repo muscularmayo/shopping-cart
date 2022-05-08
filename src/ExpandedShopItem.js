@@ -7,7 +7,7 @@ const ExpandedShopItem = (props) => {
     <div className="expanded-shop-item modal">
       <div className="modal-content">
         <span className="close">&times;</span>
-        <img className="expanded-shop-item-image" src={props.item.img} alt={props.item.img}/>
+        <img className="expanded-shop-item-image" src={props.item.img} alt='{props.item.img}'/>
         <div className="expanded-item-title">
           {props.item.name}
         </div>
