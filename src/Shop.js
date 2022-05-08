@@ -9,10 +9,10 @@ import LoadingScreen from './LoadingScreen.js'
 
 import { useSelector, useDispatch } from 'react-redux'
 import store from './store';
-import { fetchShopData } from './shopDataSlice.js'
+import { fetchShopData, setShopData } from './shopDataSlice.js'
 
 const Shop = (props) => {
-  const [shopData, setShopData] = useState([])
+  // const [shopData, setShopData] = useState([])
   const [currentFilter, setCurrentFilter] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -28,7 +28,7 @@ const Shop = (props) => {
     if (shopStatus === 'idle') {
       dispatch(fetchShopData())
     } else if (shopStatus === 'fulfilled') {
-      // setShopData(shop.shopArray)
+      setShopData(shop.shopArray)
       setLoading(false)
       setCurrentFilter(shop.filter)
     }
@@ -63,7 +63,7 @@ const Shop = (props) => {
     // }
 
     // fetchData();
-  }, [shop.shopArray, shop.filter, shopStatus, dispatch])
+  }, )
 
   const changeCurrentFilter = () => {
 
