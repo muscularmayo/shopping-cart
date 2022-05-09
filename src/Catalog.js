@@ -1,7 +1,6 @@
 import './catalog.css';
 import ShopItem from './ShopItem.js'
-import { Routes, Route } from 'react-router-dom'
-import ExpandedShopItem from './ExpandedShopItem.js'
+
 
 
 const Catalog = (props) => {

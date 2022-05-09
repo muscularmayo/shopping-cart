@@ -12,9 +12,6 @@ const ShopItem = (props) => {
         <div className="item-price">
           {props.price}
         </div>
-        {/* <div className="item-description">
-          {props.description}
-        </div> */}
       </Link>
   </div>
   );

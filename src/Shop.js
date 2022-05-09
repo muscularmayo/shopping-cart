@@ -1,14 +1,11 @@
 import './shop.css';
-import axios from 'axios'
 import { useState, useEffect } from 'react';
 import SideBar from './SideBar.js'
 import Catalog from './Catalog.js'
-import { Routes, Route } from 'react-router-dom'
-import ExpandedShopItem from './ExpandedShopItem.js'
+
 import LoadingScreen from './LoadingScreen.js'
 
 import { useSelector, useDispatch } from 'react-redux'
-import store from './store';
 import { fetchShopData, setShopData } from './shopDataSlice.js'
 
 const Shop = (props) => {
@@ -38,38 +35,9 @@ const Shop = (props) => {
 
   }
 
-  // changed it so this function happens in my original fetchData when page renders, now I can pass the info down
-  // const setShopInfo = () => {
-  //   return shopData.map((item) => {
-  //     const description = item.description.charAt(0).toUpperCase() + item.description.slice(1);
 
-  //     // return (
-  //     //   <ShopItem
-  //     //     key={item.id}
-  //     //     name={item.title}
-  //     //     price={'$' + item.price.toFixed(2)}
-  //     //     description={description}
-  //     //     img={item.image}
-  //     //     category={item.category}
-  //     //     rating={item.rating}
-  //     //   />
-  //     // )
-  //     return {
-  //       id: item.id,
-  //       name: item.title,
-  //       price: '$' + item.price.toFixed(2),
-  //       description: description,
-  //       img: item.image,
-  //       category: item.category,
-  //       rating: item.rating,
-  //     }
-  //   })
-
-    //setShopData(editedShopInfo)
-  // }
 
   const setSideBarInfo = () => {
-    // let categories = shopData.map((item) => {
     let categories = shop.shopArray.map((item) => {
       return item.category;
     })
@@ -86,20 +54,7 @@ const Shop = (props) => {
       {loading === false ? (
         <div className="shop-wrapper">
           <SideBar categories={setSideBarInfo()}/>
-          {/* <div className="shop-items-wrapper">
-            {setShopInfo()}
-          </div> */}
           <Catalog shopArray={shop.shopArray}/>
-          {/* <Routes> */}
-            {/* <Route path="/shop/:id" element={<ExpandedShopItem />} /> */}
-            {/* <Route path="/shop/0" element={<ExpandedShopItem item={props.shopArray[0]} />} /> */}
-            {/* {shop.shopArray.map((item, index) => {
-              let path = `${index}`
-              return (
-                <Route path={path} element={<ExpandedShopItem item={item}/>}/>
-              )
-            })} */}
-          {/* </Routes> */}
           </div>
       ) : (
         <LoadingScreen />

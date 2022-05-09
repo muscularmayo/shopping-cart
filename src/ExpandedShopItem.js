@@ -1,17 +1,22 @@
 import './expandedshopitem.css';
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const ExpandedShopItem = (props) => {
-  //props = {item}
   const id = Number(useParams().id)
   console.log(id, useParams())
   const shopItem = useSelector(state => state.shopData.shopArray[id])
 
+  let navigate = useNavigate();
+
+
+
+  //if shopItem is undefined, we should fetch the info, right now we are assuming that we navigated here through /shop/
+
   return (
     <div className="expanded-shop-item modal">
       <div className="modal-content">
-        <span className="close">&times;</span>
+        <button onClick={() => navigate('/shop')}>Back to Shop</button>
         <img className="expanded-shop-item-image" src={shopItem.img} alt='{props.item.img}'/>
         <div className="expanded-item-title">
           {shopItem.name}
