@@ -5,7 +5,7 @@ const ShopItem = (props) => {
   return (
     <div className="shop-item">
       <Link to={'/shop/' + props.index}>
-        <div class='img-box'>
+        <div className='img-box'>
           <img className="shop-item-image" src={props.img} alt={props.img}/>
         </div>
         <div className="item-title">
