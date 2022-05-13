@@ -16,6 +16,8 @@ export const shoppingCartSlice = createSlice({
       state.shoppingCartArray.push(action.payload) //possibly...
       }
     },
+    //type: 'shoppingCart/addToShoppingCart
+    //payload: {all item info, or maybe just id??}
 
 
 
@@ -25,10 +27,5 @@ export const shoppingCartSlice = createSlice({
 export const { addToShoppingCart } = shoppingCartSlice.actions
 
 
-
-
-
-
-// store.dispatch(fetchStore)
 
 export default shoppingCartSlice.reducer

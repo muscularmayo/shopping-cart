@@ -43,13 +43,6 @@ export const shopDataSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { setShopData } = shopDataSlice.actions
 
-// export const shopDataFetch = amount => dispatch => {
-
-//   return async (dispatch, getState) => {
-
-//   } state = {shopData: {},}
-// }
-
 
 export const fetchShopData = createAsyncThunk('shopData/fetchShopData', async () => {
   console.log('fetching...')
@@ -70,11 +63,9 @@ export const fetchShopData = createAsyncThunk('shopData/fetchShopData', async ()
     }
   })
 
-  // state.shopArray = shopArray //or action.payload.shopArray
-  // state.loading = false; //or action.payload.loading
+
   return shopArray;
 })
 
-// store.dispatch(fetchStore)
 
 export default shopDataSlice.reducer
