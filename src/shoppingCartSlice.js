@@ -20,9 +20,11 @@ export const shoppingCartSlice = createSlice({
       //find the action.payload in the array and splice it out
 
     }
-    },
     //type: 'shoppingCart/addToShoppingCart
     //payload: {all item info, or maybe just id??}
+  },
+
+
 
 
 

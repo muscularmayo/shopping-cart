@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import LoadingScreen from './LoadingScreen.js';
-import { addToCart, addToShoppingCart } from './shoppingCartSlice.js'
+import store from './store.js'
+import { addToShoppingCart } from './shoppingCartSlice.js'
 
 const ExpandedShopItem = (props) => {
   const id = Number(useParams().id)
+  const shoppingCartState = useSelector(state => state.shoppingCart)
   const shopItemObject = useSelector(state => state.shopData.shopArray[id])
   const reduxCart = useSelector(state => state.shoppingCart.shoppingCartArray)
 
@@ -39,8 +41,8 @@ const ExpandedShopItem = (props) => {
 
   const addToReduxCart = () => {
     console.log(shopItem)
-    dispatch(addToShoppingCart(shopItem))
-    reduxCart.push(shopItem)
+    dispatch(addToShoppingCart(shoppingCartState, shopItem))
+    // reduxCart.push(shopItem)
     // addToShoppingCart(shopItem)
     console.log('reduxCart after button', reduxCart)
   }
