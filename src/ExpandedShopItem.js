@@ -1,19 +1,22 @@
 import './expandedshopitem.css';
 import { useParams, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import LoadingScreen from './LoadingScreen.js';
+import { addToCart, addToShoppingCart } from './shoppingCartSlice.js'
 
 const ExpandedShopItem = (props) => {
   const id = Number(useParams().id)
   const shopItemObject = useSelector(state => state.shopData.shopArray[id])
+  const reduxCart = useSelector(state => state.shoppingCart.shoppingCartArray)
 
   const [shopItem, setShopItem] = useState(shopItemObject)
   const [loading, setLoading] = useState(true)
-  console.log(shopItem)
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  console.log('reduxCart', reduxCart)
   useEffect(()=> {
     if (shopItemObject === undefined) {
       undefinedShopItem()
@@ -24,21 +27,24 @@ const ExpandedShopItem = (props) => {
     async function undefinedShopItem() {
       const response = await axios.get(`https://fakestoreapi.com/products/${id+1}`)
       const data = response.data;
-      console.log(data)
       const fixedData = { ...data }
       fixedData.description = data.description.charAt(0).toUpperCase() + data.description.slice(1);
       fixedData.price = '$' + data.price.toFixed(2)
       fixedData.img = data.image
-      console.log(fixedData)
       setShopItem(fixedData)
       setLoading(false)
       return;
     }
   }, [shopItemObject, id])
 
+  const addToReduxCart = () => {
+    console.log(shopItem)
+    dispatch(addToShoppingCart(shopItem))
+    // addToShoppingCart(shopItem)
+    console.log('reduxCart after button', reduxCart)
+  }
 
 
-  console.log(shopItem)
 
   //if shopItem is undefined, we should fetch the info, right now we are assuming that we navigated here through /shop/
 
@@ -57,9 +63,10 @@ const ExpandedShopItem = (props) => {
         <div className="expanded-item-description">
           {shopItem.description}
         </div>
-        {/* <div className="expanded-item-rating">
+        <div className="expanded-item-rating">
           {shopItem.rating.rate + ' stars with ' + shopItem.rating.count + ' reviews.'}
-        </div> */}
+        </div>
+        <button onClick={() => addToReduxCart()}>Add to Cart</button>
       </div>
       ) : (
         <LoadingScreen />
