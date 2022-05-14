@@ -11,6 +11,11 @@ const ShoppingCart = () => {
   return (
     <div className="shopping-cart">
       <h1>Shopping Cart</h1>
+      {shoppingCart.shoppingCartArray.map((item) => {
+        return (
+          <div>{item.name + ' ' + item.price}</div>
+        )
+      })}
     </div>
   );
 }

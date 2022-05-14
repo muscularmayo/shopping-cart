@@ -24,7 +24,7 @@ const Shop = (props) => {
     if (shopStatus === 'idle') {
       dispatch(fetchShopData())
     } else if (shopStatus === 'fulfilled') {
-      // setShopData(shop.shopArray)
+      // setShopData(shop.shopArray) dispatch fetch shop data did everything!!!
       setLoading(false)
       setCurrentFilter(shop.filter)
     }
