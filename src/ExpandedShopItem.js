@@ -41,7 +41,7 @@ const ExpandedShopItem = (props) => {
 
   const addToReduxCart = () => {
     console.log(shopItem)
-    dispatch(addToShoppingCart(shoppingCartState, shopItem))
+    dispatch(addToShoppingCart(shopItem))
     // reduxCart.push(shopItem)
     // addToShoppingCart(shopItem)
     console.log('reduxCart after button', reduxCart)

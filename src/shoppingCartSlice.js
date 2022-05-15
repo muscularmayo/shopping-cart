@@ -14,7 +14,7 @@ export const shoppingCartSlice = createSlice({
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.shoppingCartArray.push(action.payload) //possibly...
-
+      // return [...state.shoppingCartArray, action.payload]
       },
     removeFromShoppingCart: (state, action) => {
       //find the action.payload in the array and splice it out
