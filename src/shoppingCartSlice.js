@@ -5,6 +5,7 @@ export const shoppingCartSlice = createSlice({
   name: 'shoppingCart',
   initialState: {
     shoppingCartArray: [],
+    numberOfItems: 0,
     error: null,
   },
   reducers: {
@@ -16,8 +17,10 @@ export const shoppingCartSlice = createSlice({
       console.log(action.payload)
       if(state.shoppingCartArray.filter((e) => {return e.id === action.payload.id}).length > 0) {
         state.shoppingCartArray.filter((e) => {return e.id === action.payload.id})[0].quantity++;
+        state.numberOfItems = calculateNumberOfItems(state.shoppingCartArray)
       } else {
         state.shoppingCartArray.push(action.payload)
+        state.numberOfItems = calculateNumberOfItems(state.shoppingCartArray)
       }
       //possibly...
       // return [...state.shoppingCartArray, action.payload]
@@ -39,13 +42,20 @@ export const shoppingCartSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addToShoppingCart } = shoppingCartSlice.actions
 
-export const addToCart = (item) => {
-  console.log(item)
-
-  return {
-    type: 'addToShoppingCart',
-    payload: item,
-  }; //??
+function calculateNumberOfItems (cartArray) {
+  let numberOfItems = 0;
+  cartArray.forEach((e) => {
+    numberOfItems += e.quantity
+  })
+  return numberOfItems;
 }
+// export const addToCart = (item) => {
+//   console.log(item)
+
+//   return {
+//     type: 'addToShoppingCart',
+//     payload: item,
+//   }; //??
+// }
 
 export default shoppingCartSlice.reducer

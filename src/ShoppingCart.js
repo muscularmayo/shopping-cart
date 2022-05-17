@@ -6,14 +6,18 @@ import { addToShoppingCart } from './shoppingCartSlice.js'
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const shoppingCart = useSelector(state => state.shoppingCart)
-  let numberOfItems = 0;
+  const numberOfItems = shoppingCart.numberOfItems
+
+
+  // let numberOfItems = 0;
   let priceTotal = 0;
   shoppingCart.shoppingCartArray.forEach((e) => {
-    numberOfItems += e.quantity;
+    // numberOfItems += e.quantity;
     let price = e.price.slice(1)
     priceTotal += e.quantity*price
   })
-  priceTotal = '$' + priceTotal;
+  priceTotal = '$' + priceTotal.toFixed(2)
+  // priceTotal = '$' + priceTotal;
   console.log(shoppingCart)
   return (
     <div className="shopping-cart">
