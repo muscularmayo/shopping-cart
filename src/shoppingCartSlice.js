@@ -13,7 +13,13 @@ export const shoppingCartSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.shoppingCartArray.push(action.payload) //possibly...
+      console.log(action.payload)
+      if(state.shoppingCartArray.filter((e) => {return e.id === action.payload.id}).length > 0) {
+        state.shoppingCartArray.filter((e) => {return e.id === action.payload.id})[0].quantity++;
+      } else {
+        state.shoppingCartArray.push(action.payload)
+      }
+      //possibly...
       // return [...state.shoppingCartArray, action.payload]
       },
     removeFromShoppingCart: (state, action) => {

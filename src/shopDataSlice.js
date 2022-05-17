@@ -60,6 +60,7 @@ export const fetchShopData = createAsyncThunk('shopData/fetchShopData', async ()
       img: item.image,
       category: item.category,
       rating: item.rating,
+      quantity: 1,
     }
   })
 
