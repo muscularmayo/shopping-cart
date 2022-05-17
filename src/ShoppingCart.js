@@ -7,9 +7,13 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const shoppingCart = useSelector(state => state.shoppingCart)
   let numberOfItems = 0;
+  let priceTotal = 0;
   shoppingCart.shoppingCartArray.forEach((e) => {
     numberOfItems += e.quantity;
+    let price = e.price.slice(1)
+    priceTotal += e.quantity*price
   })
+  priceTotal = '$' + priceTotal;
   console.log(shoppingCart)
   return (
     <div className="shopping-cart">
@@ -22,6 +26,7 @@ const ShoppingCart = () => {
           <div>{item.name + ' ' + item.price + ' ' + item.quantity}</div>
         )
       })}
+      <div id="priceTotal">Total: {priceTotal}</div>
     </div>
   );
 }
