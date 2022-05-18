@@ -9,8 +9,12 @@ const ShoppingCart = () => {
   const numberOfItems = shoppingCart.numberOfItems
 
   const handleInput = (event) => {
-    console.log(typeof event.target.id)
-    dispatch(handleInputChange(event.target))
+    console.log(event.target)
+    const info = {
+      id: event.target.id,
+      value: event.target.value
+    }
+    dispatch(handleInputChange(info))
     //console.log(event.target.id)
   }
 
@@ -24,6 +28,9 @@ const ShoppingCart = () => {
   priceTotal = '$' + priceTotal.toFixed(2)
   // priceTotal = '$' + priceTotal;
   console.log(shoppingCart)
+
+
+
   return (
     <div className="shopping-cart">
       <h1>Shopping Cart</h1>
@@ -34,7 +41,7 @@ const ShoppingCart = () => {
         return (
           <div>
             <div>{item.name + ' ' + item.price}</div>
-            <input onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
+            <input min={0} onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
           </div>
         )
       })}

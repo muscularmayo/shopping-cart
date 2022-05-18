@@ -33,10 +33,11 @@ export const shoppingCartSlice = createSlice({
       //action.payload === event.target
       //then we can take event.target.value and event.target.id from it
       const id = Number(action.payload.id)
-      console.log(typeof action.payload.id, state.shoppingCartArray[0])
       console.log(state.shoppingCartArray.filter((e) => {return e.id === id})[0])
       state.shoppingCartArray.filter((e) => {return e.id === id})[0].quantity = action.payload.value
       state.numberOfItems = calculateNumberOfItems(state.shoppingCartArray)
+      var filtered = state.shoppingCartArray.filter((e) => {return e.quantity > 0})
+      state.shoppingCartArray = filtered;
 
 
     }
@@ -56,8 +57,11 @@ export const { addToShoppingCart, removeFromShoppingCart, handleInputChange } = 
 function calculateNumberOfItems (cartArray) {
   let numberOfItems = 0;
   cartArray.forEach((e) => {
-    numberOfItems += e.quantity
+    numberOfItems += Number(e.quantity)
   })
+  if (numberOfItems <= 0) {
+    numberOfItems = 0
+  }
   return numberOfItems;
 }
 // export const addToCart = (item) => {
