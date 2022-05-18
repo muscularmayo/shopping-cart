@@ -28,6 +28,17 @@ export const shoppingCartSlice = createSlice({
     removeFromShoppingCart: (state, action) => {
       //find the action.payload in the array and splice it out
 
+    },
+    handleInputChange: (state, action) => {
+      //action.payload === event.target
+      //then we can take event.target.value and event.target.id from it
+      const id = Number(action.payload.id)
+      console.log(typeof action.payload.id, state.shoppingCartArray[0])
+      console.log(state.shoppingCartArray.filter((e) => {return e.id === id})[0])
+      state.shoppingCartArray.filter((e) => {return e.id === id})[0].quantity = action.payload.value
+      state.numberOfItems = calculateNumberOfItems(state.shoppingCartArray)
+
+
     }
     //type: 'shoppingCart/addToShoppingCart
     //payload: {all item info, or maybe just id??}
@@ -40,7 +51,7 @@ export const shoppingCartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addToShoppingCart } = shoppingCartSlice.actions
+export const { addToShoppingCart, removeFromShoppingCart, handleInputChange } = shoppingCartSlice.actions
 
 function calculateNumberOfItems (cartArray) {
   let numberOfItems = 0;

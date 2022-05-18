@@ -1,13 +1,18 @@
 import './shoppingcart.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToShoppingCart } from './shoppingCartSlice.js'
+import { addToShoppingCart, handleInputChange } from './shoppingCartSlice.js'
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const shoppingCart = useSelector(state => state.shoppingCart)
   const numberOfItems = shoppingCart.numberOfItems
 
+  const handleInput = (event) => {
+    console.log(typeof event.target.id)
+    dispatch(handleInputChange(event.target))
+    //console.log(event.target.id)
+  }
 
   // let numberOfItems = 0;
   let priceTotal = 0;
@@ -27,7 +32,10 @@ const ShoppingCart = () => {
       </div>
       {shoppingCart.shoppingCartArray.map((item) => {
         return (
-          <div>{item.name + ' ' + item.price + ' ' + item.quantity}</div>
+          <div>
+            <div>{item.name + ' ' + item.price}</div>
+            <input onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
+          </div>
         )
       })}
       <div id="priceTotal">Total: {priceTotal}</div>
