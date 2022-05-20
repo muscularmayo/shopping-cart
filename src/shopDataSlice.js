@@ -7,7 +7,10 @@ export const shopDataSlice = createSlice({
     shopArray: [],
     status: 'idle',
     error: null,
-    filter: null,
+    filter: {
+      price: null,
+      category: [],
+    },
   },
   reducers: {
     setShopData: (state, action) => {
