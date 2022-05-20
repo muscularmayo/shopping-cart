@@ -9,33 +9,21 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchShopData, setShopData } from './shopDataSlice.js'
 
 const Shop = (props) => {
-  // const [shopData, setShopData] = useState([])
-  const [currentFilter, setCurrentFilter] = useState('')
+  const [shopData, setShopData] = useState([])
   const [loading, setLoading] = useState(true)
 
   const dispatch = useDispatch();
   const shop = useSelector(state => state.shopData) //it looks at all of redux state and pulls out the shopData one.. YES
   const shopStatus = useSelector(state => state.shopData.status)
   const error = useSelector(state => state.shopData.error)
+  const filter = useSelector(state => state.shopData.filter)
+  const [currentFilter, setCurrentFilter] = useState(filter)
 
   console.log(shop, shopStatus, error) //initial state {shopArray, status, error, filter}
-
-  useEffect(() => {
-    if (shopStatus === 'idle') {
-      dispatch(fetchShopData())
-    } else if (shopStatus === 'fulfilled') {
-      // setShopData(shop.shopArray) dispatch fetch shop data did everything!!!
-      setLoading(false)
-      setCurrentFilter(shop.filter)
-    }
-
-  }, [dispatch, shop.filter, shop.shopArray, shopStatus])
 
   const changeCurrentFilter = () => {
 
   }
-
-
 
   const setSideBarInfo = () => {
     let categories = shop.shopArray.map((item) => {
@@ -46,15 +34,62 @@ const Shop = (props) => {
     return categories;
   }
 
+  const shopCategories = setSideBarInfo();
+  const priceCategories = [50, 150, Infinity] //<50, 50 < x <=150, x > 150
+  const ratingCategories = [4,3,2,1] // >=4, >=3, >=2, >=1
 
+
+  useEffect(() => {
+    if (shopStatus === 'idle') {
+      dispatch(fetchShopData())
+    } else if (shopStatus === 'fulfilled') {
+      if (filter.filterOn === false) {
+        setShopData(shop.shopArray)
+      } else if (filter.filterOn === true) {
+        const priceFilters = [];
+        const categoryFilters = [];
+        const ratingFilters = [];
+
+        for (const prop in filter) {
+          for(let i = 0; i < prop.length; i++) {
+            if (prop === 'price') {
+              if (prop[i] === true) {
+                priceFilters.push(priceCategories[i])
+              }
+            } else if (prop === 'category') {
+              if (prop[i] === true) {
+                categoryFilters.push(shopCategories[i])
+              }
+            } else if (prop === 'rating') {
+              if (prop[i] === true) {
+                ratingFilters.push(ratingCategories[i])
+              }
+            }
+          }
+        }
+
+      }
+      // we need to change this to a filtered version
+      setLoading(false)
+      setCurrentFilter(shop.filter)
+
+      // const filteredItems = [];
+      // const categoryFilter = shopData.filter((e) => {
+      //   for(let i = 0; i < shopCategories.length; i++) {
+
+      //   }
+      // })
+    }
+
+  }, [dispatch, shop.filter, shop.shopArray, shopStatus])
 
   return (
     <div>
       <h1>Shop</h1>
       {loading === false ? (
         <div className="shop-wrapper">
-          <SideBar categories={setSideBarInfo()}/>
-          <Catalog shopArray={shop.shopArray}/>
+          <SideBar categories={shopCategories}/>
+          <Catalog shopArray={shopData}/>
           </div>
       ) : (
         <LoadingScreen />

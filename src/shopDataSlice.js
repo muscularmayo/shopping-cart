@@ -8,8 +8,10 @@ export const shopDataSlice = createSlice({
     status: 'idle',
     error: null,
     filter: {
-      price: null,
-      category: [],
+      price: [false, false, false],
+      category: [], //[false,false,false,false] men's, jewelry, electronics, women's
+      rating: [false, false, false, false],
+      filterOn: false,
     },
   },
   reducers: {
@@ -23,8 +25,36 @@ export const shopDataSlice = createSlice({
       state.shopArray = action.payload //possibly...
 
 
+      },
+    setFilterData: (state, action) => {
+      //action.payload = {type, index}
+      //type = 'price','category','rating'
+      const type = action.payload.type
+      const index = action.payload.index
+
+      state.filter[type][index] = !state.filter[type][index]
+      for (const prop in state.filter) {
+        if (prop === 'filterOn') {
+          continue;
+        }
+        let currentCategory = state.filter[prop]
+        for (let i = 0; i < currentCategory.length; i++) {
+          console.log(currentCategory, currentCategory[i])
+          if (currentCategory[i] === true) {
+            state.filter.filterOn = true;
+            return;
+          } else {
+            state.filter.filterOn = false;
+          }
+        }
       }
+
     },
+    // toggleFilter: (state, action) => {
+    //   //action.payload = boolean
+    //   //if everything is false
+    // }
+  },
     extraReducers(builder) {
       builder
         .addCase(fetchShopData.pending, (state, action) => {
@@ -33,6 +63,13 @@ export const shopDataSlice = createSlice({
         .addCase(fetchShopData.fulfilled, (state, action) => {
           state.status = 'fulfilled'
           state.shopArray = action.payload
+          let categories = state.shopArray.map((item) => {
+            return item.category
+          })
+          categories = new Set(categories)
+          categories = [...categories]
+          console.log(categories)
+          state.filter.category = new Array(categories.length).fill(false)
         })
         .addCase(fetchShopData.rejected, (state, action) => {
           state.status = 'failed'
@@ -44,7 +81,7 @@ export const shopDataSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setShopData } = shopDataSlice.actions
+export const { setShopData, setFilterData } = shopDataSlice.actions
 
 
 export const fetchShopData = createAsyncThunk('shopData/fetchShopData', async () => {
