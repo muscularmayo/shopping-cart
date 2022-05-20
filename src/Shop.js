@@ -6,7 +6,7 @@ import Catalog from './Catalog.js'
 import LoadingScreen from './LoadingScreen.js'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchShopData, setShopData } from './shopDataSlice.js'
+import { fetchShopData } from './shopDataSlice.js'
 
 const Shop = (props) => {
   const [shopData, setShopData] = useState([])
@@ -17,7 +17,9 @@ const Shop = (props) => {
   const shopStatus = useSelector(state => state.shopData.status)
   const error = useSelector(state => state.shopData.error)
   const filter = useSelector(state => state.shopData.filter)
+
   const [currentFilter, setCurrentFilter] = useState(filter)
+  const [filterOn, setFilterOn] = useState(filter.filterOn)
 
   console.log(shop, shopStatus, error) //initial state {shopArray, status, error, filter}
 
@@ -45,28 +47,56 @@ const Shop = (props) => {
     } else if (shopStatus === 'fulfilled') {
       if (filter.filterOn === false) {
         setShopData(shop.shopArray)
-      } else if (filter.filterOn === true) {
+      } else if (filterOn === true) {
         const priceFilters = [];
         const categoryFilters = [];
         const ratingFilters = [];
 
         for (const prop in filter) {
-          for(let i = 0; i < prop.length; i++) {
-            if (prop === 'price') {
+          let currentCategory = filter[prop]
+          for(let i = 0; i < currentCategory.length; i++) {
+            if (currentCategory === 'price') {
               if (prop[i] === true) {
                 priceFilters.push(priceCategories[i])
               }
-            } else if (prop === 'category') {
-              if (prop[i] === true) {
+            } else if (currentCategory === 'category') {
+              if (currentCategory[i] === true) {
                 categoryFilters.push(shopCategories[i])
               }
-            } else if (prop === 'rating') {
-              if (prop[i] === true) {
+            } else if (currentCategory === 'rating') {
+              if (currentCategory[i] === true) {
                 ratingFilters.push(ratingCategories[i])
               }
             }
           }
         }
+        // const filteredItems = []
+        const priceFilteredItems = shop.shopArray.filter((e) => {
+          let cost = Number(e.price.slice(1))
+          for (let i = 0; i < priceFilters.length; i++) {
+            if (priceFilters[i] === 50) {
+              return cost <= 50;
+            } else if (priceFilters[i] === 150) {
+              return (cost <= 150 && cost>50);
+            } else {
+              return cost > 150;
+            }
+          }
+        })
+
+        const categoryFilteredItems = priceFilteredItems.filter((e) => {
+          for (let i = 0; i < categoryFilters.length; i++) {
+            return e.category === categoryFilters[i]
+          }
+        })
+
+        const filteredItems = categoryFilteredItems.filter((e) => {
+          for (let i = 0; i < ratingFilters.length; i++) {
+            return e.rating.rate > ratingFilters[i]
+          }
+        })
+        console.log(filteredItems)
+        setShopData(filteredItems)
 
       }
       // we need to change this to a filtered version
