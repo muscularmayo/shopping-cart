@@ -191,21 +191,40 @@ const Shop = (props) => {
             })
 
             const ratingAndCategoryFilteredItems = categoryFilteredItems.filter((e) => {
+              const rating = ratingFilters[0]
+              if (e.rating.rate >= rating) {
+                return e;
+              }
+            })
+            console.log('rating and category filtered items', ratingAndCategoryFilteredItems)
+            setShopData(ratingAndCategoryFilteredItems)
+          }
+        } else if (ratingFilters.length > 0) {
+          if (priceFilters.length === 0 && categoryFilters.length === 0) {
+            const ratingFilteredItems = shop.shopArray.filter((e) => {
+              const rating = ratingFilters[0]
+              if (e.rating.rate >= rating) {
+                return e;
+              }
+            })
+            setShopData(ratingFilteredItems)
+          } else if (priceFilters.length === 0 && categoryFilters.length > 0) {
+            const ratingFilteredItems = shop.shopArray.filter((e) => {
+              const rating = ratingFilters[0]
+              if (e.rating.rate >= rating) {
+                return e;
+              }
+            })
+
+            const categoryAndRatingFilteredItems = ratingFilteredItems.filter((e) => {
               if (categoryFilters.includes(e.category)) {
                 return e
               }
             })
 
-            setShopData(ratingAndCategoryFilteredItems)
+            setShopData(categoryAndRatingFilteredItems)
           }
-        } else if (ratingFilters.length > 0) {
-          const ratingFilteredItems = shop.shopArray.filter((e) => {
-            const rating = ratingFilters[0]
-            if (e.rating.rate >= rating) {
-              return e;
-            }
-          })
-          setShopData(ratingFilteredItems)
+
         }
 
 
