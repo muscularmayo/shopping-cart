@@ -1,5 +1,5 @@
 import './shop.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import SideBar from './SideBar.js'
 import Catalog from './Catalog.js'
 
@@ -26,22 +26,34 @@ const Shop = (props) => {
   const changeCurrentFilter = () => {
 
   }
+  const setSideBarInfo = useCallback(
+    () => {
+      let categories = shop.shopArray.map((item) => {
+        return item.category;
+      })
+      categories = new Set(categories)
+      categories = [...categories]
+      return categories;
+    },
+    [shop.shopArray]
+  )
+  // const setSideBarInfo = () => {
+  //   let categories = shop.shopArray.map((item) => {
+  //     return item.category;
+  //   })
+  //   categories = new Set(categories)
+  //   categories = [...categories]
+  //   return categories;
+  // }
 
-  const setSideBarInfo = () => {
-    let categories = shop.shopArray.map((item) => {
-      return item.category;
-    })
-    categories = new Set(categories)
-    categories = [...categories]
-    return categories;
-  }
 
-  const shopCategories = setSideBarInfo();
-  const priceCategories = [50, 150, Infinity] //<50, 50 < x <=150, x > 150
-  const ratingCategories = [4,3,2,1] // >=4, >=3, >=2, >=1
 
 
   useEffect(() => {
+    const priceCategories = [50, 150, Infinity] //<50, 50 < x <=150, x > 150
+    const ratingCategories = [4,3,2,1] // >=4, >=3, >=2, >=1
+    const shopCategories = setSideBarInfo();
+
     if (shopStatus === 'idle') {
       dispatch(fetchShopData())
     } else if (shopStatus === 'fulfilled') {
@@ -73,28 +85,65 @@ const Shop = (props) => {
         }
         console.log(filter, priceFilters, categoryFilters, ratingFilters)
         // const filteredItems = []
-        if (priceFilters.length > 0 && categoryFilters.length === 0 && ratingFilters.length === 0) {
-          const priceFilteredItems = shop.shopArray.filter((e) => {
-            let cost = Number(e.price.slice(1))
-            for (let i = 0; i < priceFilters.length; i++) {
-              console.log(priceFilters[i])
-              if (priceFilters[i] === 50) {
+        if (priceFilters.length > 0) {
+          if (categoryFilters.length === 0 && ratingFilters.length === 0) {
+            const priceFilteredItems = shop.shopArray.filter((e) => {
+              let cost = Number(e.price.slice(1))
+              let price = priceFilters[0]
+
+              if (price === 50) {
                 return cost <= 50;
-              } else if (priceFilters[i] === 150) {
+              } else if (price === 150) {
                 return (cost <= 150 && cost>50);
               } else {
                 return cost > 150;
               }
+
+            })
+            setShopData(priceFilteredItems)
+          } else if (categoryFilters.length > 0 && ratingFilters.length === 0) {
+            const priceFilteredItems = shop.shopArray.filter((e) => {
+              let cost = Number(e.price.slice(1))
+              let price = priceFilters[0]
+
+              if (price === 50) {
+                return cost <= 50;
+              } else if (price === 150) {
+                return (cost <= 150 && cost>50);
+              } else {
+                return cost > 150;
+              }
+
+            })
+            const categoryAndPriceFilteredItems = priceFilteredItems.filter((e) => {
+              if (categoryFilters.includes(e.category)) {
+                return e
+              }
+            })
+            setShopData(categoryAndPriceFilteredItems)
+
+          } else if (categoryFilters.length === 0 && ratingFilters.length > 0) {
+
+          } else if (categoryFilters.length > 0 && ratingFilters.length > 0) {
+
+          }
+        } else if (categoryFilters.length > 0 ) {
+          if (priceFilters.length === 0 && ratingFilters.length === 0) {
+            const categoryFilteredItems = shop.shopArray.filter((e) => {
+              if (categoryFilters.includes(e.category)) {
+                return e
+              }
+            })
+            setShopData(categoryFilteredItems)
+          }
+        } else if (ratingFilters.length > 0) {
+          const rating = ratingFilters[0]
+          const ratingFilteredItems = shop.shopArray.filter((e) => {
+            if (e.rating.rate >= rating) {
+              return e;
             }
           })
-          setShopData(priceFilteredItems)
-        } else if (categoryFilters.length > 0 && priceFilters.length === 0 && ratingFilters.length === 0) {
-          const categoryFilteredItems = shop.shopArray.filter((e) => {
-            if (categoryFilters.includes(e.category)) {
-              return e
-            }
-          })
-          setShopData(categoryFilteredItems)
+          setShopData(ratingFilteredItems)
         }
 
         // console.log(priceFilteredItems)
@@ -119,7 +168,7 @@ const Shop = (props) => {
       }
       // we need to change this to a filtered version
       setLoading(false)
-      setCurrentFilter(shop.filter)
+      // setCurrentFilter(shop.filter)
 
       // const filteredItems = [];
       // const categoryFilter = shopData.filter((e) => {
@@ -129,14 +178,14 @@ const Shop = (props) => {
       // })
     }
 
-  }, [dispatch, shop.filter, shopData, shopStatus, filter, filterOn, priceCategories, ratingCategories, shopCategories])
+  },[dispatch, filter, setSideBarInfo, shop.shopArray, shopStatus])
 
   return (
     <div>
       <h1>Shop</h1>
       {loading === false ? (
         <div className="shop-wrapper">
-          <SideBar categories={shopCategories}/>
+          <SideBar categories={setSideBarInfo()}/>
           <Catalog shopArray={shopData}/>
           </div>
       ) : (

@@ -4,24 +4,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setFilterData } from './shopDataSlice.js'
 
 const SideBar = (props) => {
-  const [shopCategories, setShopCategories] = useState([])
-  const [categoriesFilter, setCategoriesFilter] = useState(
-    new Array(props.categories.length).fill(false)
-  )
-  const [priceFilter, setPriceFilter] = useState(
-    [false, false, false]
-  )
+  const filter = useSelector(state => state.shopData.filter)
+
+  const [shopCategories, setShopCategories] = useState(props.categories)
+  const [categoriesFilter, setCategoriesFilter] = useState(filter.category)
+  const [priceFilter, setPriceFilter] = useState(filter.price)
   //0-50, 50-150, 150+
-  const [ratingsFilter, setRatingsFilter] = useState(
-    [false, false, false, false]
-  )
+  const [ratingsFilter, setRatingsFilter] = useState(filter.rating)
   //4star+, 3star+, 2+, 1+
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    setShopCategories(props.categories)
-  },[props.categories])
 
   const handleCategoriesChange = (index) => {
     const filteredCategories = [...categoriesFilter]
@@ -40,6 +32,17 @@ const SideBar = (props) => {
   const handlePriceFilterChange = (index) => {
     const filteredPrices = [...priceFilter]
     filteredPrices[index] = !filteredPrices[index]
+    const count = {
+      true: 0,
+      false: 0
+    }
+    for (let i = 0; i < filteredPrices.length; i++) {
+      count[filteredPrices[i]]++
+    }
+    if (count.true > 1) {
+      return;
+    }
+
     setPriceFilter(filteredPrices)
     dispatch(setFilterData({type: 'price', index}))
   }
@@ -47,6 +50,16 @@ const SideBar = (props) => {
   const handleRatingsFilterChange = (index) => {
     const filteredRatings = [...ratingsFilter]
     filteredRatings[index] = !filteredRatings[index]
+    const count = {
+      true: 0,
+      false: 0
+    }
+    for (let i = 0; i < filteredRatings.length; i++) {
+      count[filteredRatings[i]]++
+    }
+    if (count.true > 1) {
+      return;
+    }
     setRatingsFilter(filteredRatings)
     dispatch(setFilterData({type: 'rating', index}))
 
@@ -76,15 +89,15 @@ const SideBar = (props) => {
       <h4>Prices</h4>
         <div>
           <input type="checkbox" value="0-50" name="0-50" checked={priceFilter[0]} onChange={() => handlePriceFilterChange(0)}/>
-          <label htmlFor="0-50">$0-$50</label>
+          <label htmlFor="0-50">under $50</label>
         </div>
         <div>
           <input type="checkbox" value="50.01-150" name="50.01-150" checked={priceFilter[1]} onChange={() => handlePriceFilterChange(1)}/>
-          <label htmlFor="50.01-150">$50.01-$150</label>
+          <label htmlFor="50.01-150">$50 to $150</label>
         </div>
         <div>
           <input type="checkbox" value="150+" name="150+" checked={priceFilter[2]} onChange={() => handlePriceFilterChange(2)}/>
-          <label htmlFor="150+">$150+</label>
+          <label htmlFor="150+">$150 & over</label>
         </div>
 
       <h4>Ratings</h4>
