@@ -19,9 +19,9 @@ const Shop = (props) => {
   const filter = useSelector(state => state.shopData.filter)
 
   const [currentFilter, setCurrentFilter] = useState(filter)
-  const [filterOn, setFilterOn] = useState(filter.filterOn)
+  const [filterOn, setFilterOn] = useState(currentFilter.filterOn)
 
-  console.log(shop, shopStatus, error) //initial state {shopArray, status, error, filter}
+  // console.log(shop, shopStatus, error) //initial state {shopArray, status, error, filter}
 
   const changeCurrentFilter = () => {
 
@@ -47,56 +47,74 @@ const Shop = (props) => {
     } else if (shopStatus === 'fulfilled') {
       if (filter.filterOn === false) {
         setShopData(shop.shopArray)
-      } else if (filterOn === true) {
+      } else if (filter.filterOn === true) {
         const priceFilters = [];
         const categoryFilters = [];
         const ratingFilters = [];
 
         for (const prop in filter) {
           let currentCategory = filter[prop]
+          // console.log(currentCategory)
           for(let i = 0; i < currentCategory.length; i++) {
-            if (currentCategory === 'price') {
-              if (prop[i] === true) {
+            if (prop === 'price') {
+              if (currentCategory[i] === true) {
                 priceFilters.push(priceCategories[i])
               }
-            } else if (currentCategory === 'category') {
+            } else if (prop === 'category') {
               if (currentCategory[i] === true) {
                 categoryFilters.push(shopCategories[i])
               }
-            } else if (currentCategory === 'rating') {
+            } else if (prop === 'rating') {
               if (currentCategory[i] === true) {
                 ratingFilters.push(ratingCategories[i])
               }
             }
           }
         }
+        console.log(filter, priceFilters, categoryFilters, ratingFilters)
         // const filteredItems = []
-        const priceFilteredItems = shop.shopArray.filter((e) => {
-          let cost = Number(e.price.slice(1))
-          for (let i = 0; i < priceFilters.length; i++) {
-            if (priceFilters[i] === 50) {
-              return cost <= 50;
-            } else if (priceFilters[i] === 150) {
-              return (cost <= 150 && cost>50);
-            } else {
-              return cost > 150;
+        if (priceFilters.length > 0 && categoryFilters.length === 0 && ratingFilters.length === 0) {
+          const priceFilteredItems = shop.shopArray.filter((e) => {
+            let cost = Number(e.price.slice(1))
+            for (let i = 0; i < priceFilters.length; i++) {
+              console.log(priceFilters[i])
+              if (priceFilters[i] === 50) {
+                return cost <= 50;
+              } else if (priceFilters[i] === 150) {
+                return (cost <= 150 && cost>50);
+              } else {
+                return cost > 150;
+              }
             }
-          }
-        })
+          })
+          setShopData(priceFilteredItems)
+        } else if (categoryFilters.length > 0 && priceFilters.length === 0 && ratingFilters.length === 0) {
+          const categoryFilteredItems = shop.shopArray.filter((e) => {
+            if (categoryFilters.includes(e.category)) {
+              return e
+            }
+          })
+          setShopData(categoryFilteredItems)
+        }
 
-        const categoryFilteredItems = priceFilteredItems.filter((e) => {
-          for (let i = 0; i < categoryFilters.length; i++) {
-            return e.category === categoryFilters[i]
-          }
-        })
+        // console.log(priceFilteredItems)
+        // if (priceFilteredItems.length > 0) {
+        //   const categoryFilteredItems = priceFilteredItems.filter((e) => {
+        //     if (categoryFilters.includes(e.category)) {
+        //       return e;
+        //     }
+        //   })
+        // }
 
-        const filteredItems = categoryFilteredItems.filter((e) => {
-          for (let i = 0; i < ratingFilters.length; i++) {
-            return e.rating.rate > ratingFilters[i]
-          }
-        })
-        console.log(filteredItems)
-        setShopData(filteredItems)
+        // console.log(categoryFilteredItems)
+
+        // const filteredItems = categoryFilteredItems.filter((e) => {
+        //   for (let i = 0; i < ratingFilters.length; i++) {
+        //     return e.rating.rate > ratingFilters[i]
+        //   }
+        // })
+        // console.log(filteredItems)
+        // setShopData(filteredItems)
 
       }
       // we need to change this to a filtered version
@@ -111,7 +129,7 @@ const Shop = (props) => {
       // })
     }
 
-  }, [dispatch, shop.filter, shop.shopArray, shopStatus])
+  }, [dispatch, shop.filter, shopData, shopStatus, filter, filterOn, priceCategories, ratingCategories, shopCategories])
 
   return (
     <div>

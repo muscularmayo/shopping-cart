@@ -25,7 +25,7 @@ export const shopDataSlice = createSlice({
       state.shopArray = action.payload //possibly...
 
 
-      },
+    },
     setFilterData: (state, action) => {
       //action.payload = {type, index}
       //type = 'price','category','rating'
@@ -39,7 +39,7 @@ export const shopDataSlice = createSlice({
         }
         let currentCategory = state.filter[prop]
         for (let i = 0; i < currentCategory.length; i++) {
-          console.log(currentCategory, currentCategory[i])
+          // console.log(currentCategory, currentCategory[i])
           if (currentCategory[i] === true) {
             state.filter.filterOn = true;
             return;
