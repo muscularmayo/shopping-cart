@@ -123,9 +123,57 @@ const Shop = (props) => {
             setShopData(categoryAndPriceFilteredItems)
 
           } else if (categoryFilters.length === 0 && ratingFilters.length > 0) {
+            const priceFilteredItems = shop.shopArray.filter((e) => {
+              let cost = Number(e.price.slice(1))
+              let price = priceFilters[0]
 
+              if (price === 50) {
+                return cost <= 50;
+              } else if (price === 150) {
+                return (cost <= 150 && cost>50);
+              } else {
+                return cost > 150;
+              }
+
+            })
+
+            const ratingAndPriceFilteredItems = priceFilteredItems.filter((e) => {
+              const rating = ratingFilters[0]
+              if (e.rating.rate >= rating) {
+                return e;
+              }
+            })
+
+            setShopData(ratingAndPriceFilteredItems)
           } else if (categoryFilters.length > 0 && ratingFilters.length > 0) {
+            const priceFilteredItems = shop.shopArray.filter((e) => {
+              let cost = Number(e.price.slice(1))
+              let price = priceFilters[0]
 
+              if (price === 50) {
+                return cost <= 50;
+              } else if (price === 150) {
+                return (cost <= 150 && cost>50);
+              } else {
+                return cost > 150;
+              }
+
+            })
+
+            const ratingAndPriceFilteredItems = priceFilteredItems.filter((e) => {
+              const rating = ratingFilters[0]
+              if (e.rating.rate >= rating) {
+                return e;
+              }
+            })
+
+            const allFilteredItems = ratingAndPriceFilteredItems.filter((e) => {
+              if (categoryFilters.includes(e.category)) {
+                return e
+              }
+            })
+
+            setShopData(allFilteredItems)
           }
         } else if (categoryFilters.length > 0 ) {
           if (priceFilters.length === 0 && ratingFilters.length === 0) {
@@ -135,10 +183,24 @@ const Shop = (props) => {
               }
             })
             setShopData(categoryFilteredItems)
+          } else if (priceFilters.length === 0 && ratingFilters.length > 0) {
+            const categoryFilteredItems = shop.shopArray.filter((e) => {
+              if (categoryFilters.includes(e.category)) {
+                return e
+              }
+            })
+
+            const ratingAndCategoryFilteredItems = categoryFilteredItems.filter((e) => {
+              if (categoryFilters.includes(e.category)) {
+                return e
+              }
+            })
+
+            setShopData(ratingAndCategoryFilteredItems)
           }
         } else if (ratingFilters.length > 0) {
-          const rating = ratingFilters[0]
           const ratingFilteredItems = shop.shopArray.filter((e) => {
+            const rating = ratingFilters[0]
             if (e.rating.rate >= rating) {
               return e;
             }
@@ -146,24 +208,6 @@ const Shop = (props) => {
           setShopData(ratingFilteredItems)
         }
 
-        // console.log(priceFilteredItems)
-        // if (priceFilteredItems.length > 0) {
-        //   const categoryFilteredItems = priceFilteredItems.filter((e) => {
-        //     if (categoryFilters.includes(e.category)) {
-        //       return e;
-        //     }
-        //   })
-        // }
-
-        // console.log(categoryFilteredItems)
-
-        // const filteredItems = categoryFilteredItems.filter((e) => {
-        //   for (let i = 0; i < ratingFilters.length; i++) {
-        //     return e.rating.rate > ratingFilters[i]
-        //   }
-        // })
-        // console.log(filteredItems)
-        // setShopData(filteredItems)
 
       }
       // we need to change this to a filtered version
