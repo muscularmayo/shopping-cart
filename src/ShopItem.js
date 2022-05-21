@@ -14,6 +14,9 @@ const ShopItem = (props) => {
         <div className="item-price">
           {props.price}
         </div>
+        <div className="item-rating">
+          {props.rating.rate} stars ({props.rating.count})
+        </div>
       </Link>
   </div>
   );
