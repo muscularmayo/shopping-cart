@@ -228,6 +228,7 @@ const Shop = (props) => {
         }
 
 
+
       }
       // we need to change this to a filtered version
       setLoading(false)
