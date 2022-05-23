@@ -5,10 +5,10 @@
   justify-content: space-around;
   position: relative;
   margin: auto;
-  background-color:cyan;
+  background-color:antiquewhite;
   top: 0;
   left: 0;
-  height: 70px;
+  height: 1.3rem;
 }
 
 a:link {
@@ -39,3 +39,5 @@ a:active {
   background-color: white;
   position: absolute;
 }
+
+

@@ -7,14 +7,7 @@ import HoverShoppingCart from './HoverShoppingCart.js'
 
 const NavBar = () => {
   const numberOfItems = useSelector(state => state.shoppingCart.numberOfItems)
-  const shoppingCart = useSelector(state => state.shoppingCart)
-
   const [style, setStyle] = useState({display: 'none'})
-
-
-
-
-
 
   return (
     <div className="header">
