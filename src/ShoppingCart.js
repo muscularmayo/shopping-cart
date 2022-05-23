@@ -37,16 +37,18 @@ const ShoppingCart = () => {
       <div>
         Number of items in cart: {numberOfItems}
       </div>
-      {shoppingCart.shoppingCartArray.map((item) => {
-        return (
-          <div>
-            <img src={item.img} alt={item.img}></img>
-            <div>{item.name + ' ' + item.price}</div>
-            <input min={0} onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
-          </div>
-        )
-      })}
-      <div id="priceTotal">Total: {priceTotal}</div>
+      <div className="shopping-cart-catalog">
+        {shoppingCart.shoppingCartArray.map((item) => {
+          return (
+            <div className="shopping-cart-item">
+              <img class="shopping-cart-image" src={item.img} alt={item.img}></img>
+              <div>{item.name + ' ' + item.price}</div>
+              <input min={0} onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
+            </div>
+          )
+        })}
+      </div>
+      <div className="priceTotal">Total: {priceTotal}</div>
     </div>
   );
 }
