@@ -3,8 +3,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content:left;
+
 }
 
 .catalog > div {
   flex: 0 0 200px;
+}
+
+.shop-item {
+  border-style: solid;
+  border: 1px black;
 }

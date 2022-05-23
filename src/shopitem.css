@@ -1,6 +1,7 @@
 .shop-item-image {
   width: 180px;
   height: 180px;
+  object-fit: contain;
 }
 
 .shop-item {
