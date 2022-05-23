@@ -1,16 +1,12 @@
-.modal {
+/* /* .modal {
   display: block;
   position:fixed;
   z-index: 1;
   background-color: rbga(0, 0, 0, 0.25);
   height: 100%;
   width: 100%;
-}
+} */
 
-.modal-content {
-  background-color: white;
-  position: absolute;
-}
 
 .expanded-shop-item-image {
   height: 50vh;
