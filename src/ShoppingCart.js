@@ -40,6 +40,7 @@ const ShoppingCart = () => {
       {shoppingCart.shoppingCartArray.map((item) => {
         return (
           <div>
+            <img src={item.img} alt={item.img}></img>
             <div>{item.name + ' ' + item.price}</div>
             <input min={0} onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
           </div>

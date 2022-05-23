@@ -83,7 +83,7 @@ const Shop = (props) => {
             }
           }
         }
-        console.log(filter, priceFilters, categoryFilters, ratingFilters)
+        // console.log(filter, priceFilters, categoryFilters, ratingFilters)
         // const filteredItems = []
         if (priceFilters.length > 0) {
           if (categoryFilters.length === 0 && ratingFilters.length === 0) {
@@ -196,7 +196,7 @@ const Shop = (props) => {
                 return e;
               }
             })
-            console.log('rating and category filtered items', ratingAndCategoryFilteredItems)
+            // console.log('rating and category filtered items', ratingAndCategoryFilteredItems)
             setShopData(ratingAndCategoryFilteredItems)
           }
         } else if (ratingFilters.length > 0) {

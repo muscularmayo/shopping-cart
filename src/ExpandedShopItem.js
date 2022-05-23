@@ -18,7 +18,7 @@ const ExpandedShopItem = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log('reduxCart', reduxCart)
+  // console.log('reduxCart', reduxCart)
   useEffect(()=> {
     if (shopItemObject === undefined) {
       undefinedShopItem()
@@ -40,11 +40,11 @@ const ExpandedShopItem = (props) => {
   }, [shopItemObject, id])
 
   const addToReduxCart = () => {
-    console.log(shopItem)
+    // console.log(shopItem)
     dispatch(addToShoppingCart(shopItem))
     // reduxCart.push(shopItem)
     // addToShoppingCart(shopItem)
-    console.log('reduxCart after button', reduxCart)
+    // console.log('reduxCart after button', reduxCart)
   }
 
 

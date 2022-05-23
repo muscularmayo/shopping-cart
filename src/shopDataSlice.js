@@ -68,7 +68,7 @@ export const shopDataSlice = createSlice({
           })
           categories = new Set(categories)
           categories = [...categories]
-          console.log(categories)
+          // console.log(categories)
           state.filter.category = new Array(categories.length).fill(false)
         })
         .addCase(fetchShopData.rejected, (state, action) => {
