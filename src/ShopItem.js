@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 const ShopItem = (props) => {
   return (
-    <div className="shop-item">
-      <Link to={'/shop/' + props.index}>
+    <Link className="shop-item" to={'/shop/' + props.index}>
+      <div className="shop-content">
         <div className='img-box'>
           <img className="shop-item-image" src={props.img} alt={props.img}/>
         </div>
@@ -17,8 +17,8 @@ const ShopItem = (props) => {
         <div className="item-rating">
           {props.rating.rate} stars ({props.rating.count})
         </div>
-      </Link>
-  </div>
+      </div>
+    </Link>
   );
 }
 

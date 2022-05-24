@@ -10,19 +10,11 @@ input {
 }
 
 
+/*
 #root {
-  background-color:antiquewhite;
-}
+  background-color:red;
+} */
 
-.catalog {
-  background-color: white;
-
-}
-
-.catalog .shop-item {
-  margin: 1rem;
-  border: black 1px;
-}
 
 .sidebar {
   background-color:white;

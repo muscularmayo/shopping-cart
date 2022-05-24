@@ -2,15 +2,24 @@
 .catalog {
   display: flex;
   flex-wrap: wrap;
-  justify-content:left;
+  /* outline: 1px solid black; */
+  border-bottom: 1px solid black;
+  justify-content: left;
+  height: fit-content;
+  width: fit-content;
+  background-color: white;
+  margin-top: -3px;
+  margin-left: -3px;
 
 }
 
-.catalog > div {
-  flex: 0 0 200px;
+.catalog .shop-item {
+  flex: 1 1 200px;
+  margin-top: 1px;
+  margin-left: 1px;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
 }
 
-.shop-item {
-  border-style: solid;
-  border: 1px black;
-}

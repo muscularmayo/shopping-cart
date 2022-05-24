@@ -246,7 +246,6 @@ const Shop = (props) => {
 
   return (
     <div>
-      <h1>Shop</h1>
       {loading === false ? (
         <div className="shop-wrapper">
           <SideBar categories={setSideBarInfo()}/>

@@ -2,15 +2,24 @@
   width: 180px;
   height: 180px;
   object-fit: contain;
+  padding-top: 15px;
 }
 
 .shop-item {
-  align-self:left;
+  padding: 1px;
+  background-color: white;
+  width: 220px;
+  height: 307px;
+  object-fit: contain;
+  outline: 1px solid;
 }
+
 
 .img-box {
   display: inline-block;
-  overflow: hidden !important;
+  /* overflow: hidden !important; */
+  justify-content: center;
+  align-self: center;
 }
 
 .img-box img {
@@ -23,4 +32,13 @@
   transform: scale(1.08);
 }
 
+.item-price {
+  font-weight: 2;
+}
 
+.shop-content {
+  margin: 0 auto;
+  height: auto;
+  position: center;
+
+}
