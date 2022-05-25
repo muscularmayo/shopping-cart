@@ -55,25 +55,30 @@ const ExpandedShopItem = (props) => {
     <div className="expanded-shop-item modal">
       {loading === false ? (
         <div className="modal-content">
-        <button onClick={() => navigate('/shop')}>Back to Shop</button>
-        <img className="expanded-shop-item-image" src={shopItem.img} alt='{props.item.img}'/>
-        <div className="expanded-item-title">
-          {shopItem.name}
+          <img className="expanded-shop-item-image" src={shopItem.img} alt='{props.item.img}'/>
+          <div className="expanded-shop-info">
+            <div className="expanded-item-title item-title">
+              {shopItem.name}
+            </div>
+            <div className="expanded-item-price item-price">
+              {shopItem.price}
+            </div>
+            <div className="expanded-item-description item-description">
+              {shopItem.description}
+            </div>
+            <div className="expanded-item-rating">
+              {shopItem.rating.rate + ' stars with ' + shopItem.rating.count + ' reviews.'}
+            </div>
+            <button onClick={() => addToReduxCart()}>Add to Cart</button>
+
+          </div>
+
         </div>
-        <div className="expanded-item-price item-price">
-          {shopItem.price}
-        </div>
-        <div className="expanded-item-description">
-          {shopItem.description}
-        </div>
-        <div className="expanded-item-rating">
-          {shopItem.rating.rate + ' stars with ' + shopItem.rating.count + ' reviews.'}
-        </div>
-        <button onClick={() => addToReduxCart()}>Add to Cart</button>
-      </div>
+
       ) : (
         <LoadingScreen />
       )}
+      <button className="back-to-shop" onClick={() => navigate('/shop')}>Back to Shop</button>
   </div>
   );
 }

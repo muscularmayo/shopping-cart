@@ -7,9 +7,8 @@
 
 .shop-item {
   padding: 3px;
-  background-color: white;
-  width: 240px;
-  height: 330px;
+  width: 260px;
+  height: 370px;
   object-fit: contain;
   outline: 1px solid;
 }
@@ -17,7 +16,7 @@
 
 .img-box {
   display: inline-block;
-  /* overflow: hidden !important; */
+  overflow: hidden !important;
   justify-content: center;
   align-self: center;
 }
@@ -53,3 +52,9 @@
   font-weight: bold;
 }
 
+.item-rating {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  left: 30%;
+}

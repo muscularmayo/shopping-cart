@@ -24,3 +24,9 @@
   position: absolute;
 
 }
+
+.hover-shopping-cart {
+  background-color: gray;
+  z-index: 9;
+  position: relative;
+}

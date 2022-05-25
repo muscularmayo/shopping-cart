@@ -6,9 +6,27 @@
   height: 100%;
   width: 100%;
 } */
-
+.expanded-shop-item {
+  padding-top: 20px;
+}
 
 .expanded-shop-item-image {
   height: 50vh;
   width: 50vh;
+  margin: 3vh;
+}
+
+.modal-content {
+  display: inline-flex;
+  flex: wrap;
+}
+
+.expanded-shop-info {
+  padding-left: 5vh;
+}
+
+.back-to-shop {
+  position: absolute;
+  left: 2%;
+  bottom: 20%;
 }

@@ -32,7 +32,7 @@ const HoverShoppingCart = () => {
 
 
   return (
-    <div className="shopping-cart">
+    <div className="hover-shopping-cart">
       <h3>Shopping Cart</h3>
       <div>
         Number of items in cart: {numberOfItems}
@@ -45,7 +45,7 @@ const HoverShoppingCart = () => {
           </div>
         )
       })}
-      <div id="priceTotal">Total: {priceTotal}</div>
+      <div className="priceTotal">Total: {priceTotal}</div>
     </div>
   );
 }
