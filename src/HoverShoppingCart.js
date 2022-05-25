@@ -45,7 +45,7 @@ const HoverShoppingCart = () => {
           </div>
         )
       })}
-      <div className="priceTotal">Total: {priceTotal}</div>
+      <div className="hover-price-total">Total: {priceTotal}</div>
     </div>
   );
 }
