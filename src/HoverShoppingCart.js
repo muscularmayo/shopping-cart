@@ -33,7 +33,6 @@ const HoverShoppingCart = () => {
 
   return (
     <div className="hover-shopping-cart">
-      <h3>Shopping Cart</h3>
       <div>
         Number of items in cart: {numberOfItems}
       </div>
