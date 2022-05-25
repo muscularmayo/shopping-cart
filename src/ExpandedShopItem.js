@@ -60,7 +60,7 @@ const ExpandedShopItem = (props) => {
         <div className="expanded-item-title">
           {shopItem.name}
         </div>
-        <div className="expanded-item-price">
+        <div className="expanded-item-price item-price">
           {shopItem.price}
         </div>
         <div className="expanded-item-description">

@@ -2,14 +2,14 @@
   width: 180px;
   height: 180px;
   object-fit: contain;
-  padding-top: 15px;
+  padding-top: 9px;
 }
 
 .shop-item {
-  padding: 1px;
+  padding: 3px;
   background-color: white;
-  width: 220px;
-  height: 307px;
+  width: 240px;
+  height: 330px;
   object-fit: contain;
   outline: 1px solid;
 }
@@ -33,12 +33,23 @@
 }
 
 .item-price {
-  font-weight: 2;
+  text-decoration-line: underline;
+  text-align: auto;
+  font-size: 110%;
 }
 
 .shop-content {
   margin: 0 auto;
   height: auto;
-  position: center;
-
+  padding-bottom: 30px;
 }
+
+.item-price, .img-box, .item-title, .item-rating {
+  padding-top: 5px;
+}
+
+.item-title {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
