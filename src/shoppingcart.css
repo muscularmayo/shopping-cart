@@ -28,5 +28,10 @@
 .hover-shopping-cart {
   background-color: beige;
   z-index: 9;
-  position: relative;
+  /* position: relative; */
+  padding: .4em;
+  border: 1px solid gray;
+  width: 300;
+  height: 300;
+  position: absolute;
 }

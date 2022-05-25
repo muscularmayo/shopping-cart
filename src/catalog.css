@@ -2,7 +2,6 @@
 .catalog {
   display: flex;
   flex-wrap: wrap;
-  /* outline: 1px solid black; */
 
   justify-content: left;
   height: fit-content;
@@ -12,6 +11,7 @@
   margin-left: -1px;
   margin-bottom: 3vh;
   position: relative;
+  z-index: 2;
 }
 
 .catalog .shop-item {

@@ -3,6 +3,8 @@
   height: 180px;
   object-fit: contain;
   padding-top: 9px;
+  z-index: 1;
+  position: relative;
 }
 
 .shop-item {
@@ -16,7 +18,7 @@
 
 
 .img-box {
-  display: inline-block;
+  /* display: inline-block; */
   overflow: hidden !important;
   justify-content: center;
   align-self: center;
@@ -58,4 +60,5 @@
   bottom: 0px;
   text-align: center;
   left: 30%;
+  padding-bottom: .7rem;
 }
