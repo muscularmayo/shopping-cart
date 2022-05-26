@@ -2,6 +2,11 @@ import './shopitem.css';
 import { Link } from 'react-router-dom'
 
 const ShopItem = (props) => {
+  let title = props.name;
+  if (title.indexOf('(') !== -1) {
+    let parenthIndex = title.indexOf('(')
+    title = title.slice(0, parenthIndex)
+  }
   return (
     // <div className="shop-item" >
       <Link className="shop-item" to={'/shop/' + props.index}>
@@ -10,7 +15,7 @@ const ShopItem = (props) => {
             <img className="shop-item-image" src={props.img} alt={props.img}/>
           </div>
           <div className="item-title">
-            {props.name}
+            {title}
           </div>
           <div className="item-price">
             {props.price}
