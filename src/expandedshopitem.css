@@ -8,11 +8,16 @@
 } */
 .expanded-shop-item {
   padding-top: 20px;
+  margin: 10px;
+}
+
+.expanded-item-title {
+  text-align: left;
 }
 
 .expanded-shop-item-image {
-  height: 50vh;
-  width: 50vh;
+  height: 70vh;
+  width: 70vh;
   margin: 3vh;
 }
 
@@ -28,5 +33,5 @@
 .back-to-shop {
   position: absolute;
   left: 2%;
-  bottom: 20%;
+  bottom: 10%;
 }

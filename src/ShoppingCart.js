@@ -34,9 +34,9 @@ const ShoppingCart = () => {
   return (
     <div className="shopping-cart">
       <h1>Shopping Cart</h1>
-      <div>
+      {/* <div>
         Number of items in cart: {numberOfItems}
-      </div>
+      </div> */}
       <div className="shopping-cart-catalog">
         {shoppingCart.shoppingCartArray.map((item) => {
           return (
@@ -48,7 +48,7 @@ const ShoppingCart = () => {
           )
         })}
       </div>
-      <div className="priceTotal">Total: {priceTotal}</div>
+      <div className="price-total-div">Total ({numberOfItems} items): <span className="priceTotal">{priceTotal}</span></div>
     </div>
   );
 }

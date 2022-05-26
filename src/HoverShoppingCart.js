@@ -39,7 +39,7 @@ const HoverShoppingCart = () => {
       {shoppingCart.shoppingCartArray.map((item) => {
         return (
           <div>
-            <div>{item.name + ' ' + item.price}</div>
+            <div>{item.name + ' - ' + item.price}</div>
             <input min={0} onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
           </div>
         )

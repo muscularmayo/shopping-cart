@@ -2,8 +2,8 @@
   color: black;
   display: flex;
   border: 1px black;
-  height: 65vh;
-  width: 100vh;
+  height: 70vh;
+  width: 90vh;
   margin: 0 -5px;
 }
 
@@ -21,8 +21,15 @@
 }
 
 .priceTotal {
-  position: absolute;
 
+  font-size: larger;
+  font-weight: bold;
+
+}
+
+.price-total-div {
+  position: absolute;
+  margin-left: 120vh;
 }
 
 .hover-shopping-cart {
@@ -31,7 +38,8 @@
   /* position: relative; */
   padding: .4em;
   border: 1px solid gray;
-  width: 300;
-  height: 300;
+  width: fit-content;
+  height: fit-content;
   position: absolute;
+  overflow: scroll;
 }
