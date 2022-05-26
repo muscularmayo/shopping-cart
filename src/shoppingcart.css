@@ -38,7 +38,7 @@
   /* position: relative; */
   padding: .4em;
   border: 1px solid gray;
-  width: fit-content;
+  max-width: 40%;
   height: fit-content;
   position: absolute;
   overflow: scroll;
