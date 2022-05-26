@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import HoverShoppingCart from './HoverShoppingCart.js'
+import FakeIcon from './fake-icon.png'
 
 
 const NavBar = () => {
@@ -13,7 +14,7 @@ const NavBar = () => {
     <div className="header">
       <ul className="nav-bar">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/"><img id="nav-icon" className="fake-icon" src={FakeIcon} alt="store logo" /></Link>
         </li>
         <li>
           <Link to="/shop">Shop</Link>

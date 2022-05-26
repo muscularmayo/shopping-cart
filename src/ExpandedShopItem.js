@@ -29,7 +29,9 @@ const ExpandedShopItem = (props) => {
     async function undefinedShopItem() {
       const response = await axios.get(`https://fakestoreapi.com/products/${id+1}`)
       const data = response.data;
+      console.log(data)
       const fixedData = { ...data }
+      fixedData.name = data.title
       fixedData.description = data.description.charAt(0).toUpperCase() + data.description.slice(1);
       fixedData.price = '$' + data.price.toFixed(2)
       fixedData.img = data.image

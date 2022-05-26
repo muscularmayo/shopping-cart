@@ -7,11 +7,20 @@
   margin: auto;
   top: 0;
   left: 0;
-  height: 2rem;
+  height: 9vh;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 120 120;
+  z-index: 8;
+
 
 }
+
+#nav-icon {
+  height: 8vh;
+  position: absolute;
+  left: 0%;
+}
+
 
 a:link {
   color: black;
