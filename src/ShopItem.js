@@ -37,7 +37,7 @@ const ShopItem = (props) => {
             {props.price}
           </div>
           <div className="item-rating">
-            {props.rating.rate} stars ({props.rating.count} reviews)
+            {/* {props.rating.rate} stars ({props.rating.count} reviews) */}
             <Star type="0.5"/>
           </div>
         </div>

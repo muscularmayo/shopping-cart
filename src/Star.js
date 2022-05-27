@@ -1,15 +1,15 @@
-import React, { linearGradient } from 'react';
+import React from 'react';
 
 const Star = (props) => {
   if (props.type === '1') {
     return (
       <div className="star">
           <svg
-              width="29"
-              height="29"
+              width="15%"
+              height="15%"
               viewBox="0 0 24 24"
               fill="yellow"
-              stroke="#393939"
+              stroke="yellow"
               strokeWidth="1"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -21,37 +21,80 @@ const Star = (props) => {
     );
   } else if (props.type === '0.5') {
     return (
-      <div className="star">
-        <svg
-            width="29"
-            height="29"
-            viewBox="0 0 24 24"
-            fill="yellow"
-            stroke="#393939"
+      // <div className ="star half-star">
+      //     <svg
+      //         width="15%"
+      //         height="15%"
+      //         viewBox="0 0 24 24"
+      //         fill="yellow"
+      //         stroke="yellow"
+      //         strokeWidth="1"
+      //         strokeLinecap="round"
+      //         strokeLinejoin="round"
+      //     >
+      //       <polygon points="12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2 "></polygon>
+      //     </svg>
+      //     <svg
+      //       width="15%"
+      //       height="15%"
+      //       viewBox="0 0 24 24"
+      //       fill="gray"
+      //       stroke="gray"
+      //       strokeWidth="1"
+      //       strokeLinecap="round"
+      //       strokeLinejoin="round"
+      //     >
+      //       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 "></polygon>
+      //     </svg>
+
+      // </div>
+      <div className="star half-star">
+        <svg>
+          <svg
+              // width="30%"
+              // height="30%"
+              // viewBox="0 0 24 24"
+              fill="yellow"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+
+          >
+            <polygon points=" 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2 "></polygon>
+          </svg>
+          <svg
+            // width="30%"
+            // height="30%"
+            // viewBox="0 0 24 24"
+            fill="gray"
             strokeWidth="1"
+
             strokeLinecap="round"
             strokeLinejoin="round"
 
-        >
-          <defs>
-            <linearGradient id="grad">
-              <stop offset="50%" stopColor="yellow"/>
-              <stop offset="50%" stopColor="grey"/>
-            </linearGradient>
-          </defs>
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          >
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 "></polygon>
+          </svg>
         </svg>
+
+
       </div>
+
+
+
+
+
+
     );
   } else { //props.type = 0
     return (
       <div className="star">
         <svg
-            width="29"
-            height="29"
-            viewBox="0 0 12 12"
-            fill="none"
-            stroke="#393939"
+            width="15%"
+            height="15%"
+            viewBox="0 0 24 24"
+            fill="gray"
+            stroke="gray"
             strokeWidth="1"
             strokeLinecap="round"
             strokeLinejoin="round"
