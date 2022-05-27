@@ -5,7 +5,7 @@ const About = () => {
     <div className="about">
       <h1>About</h1>
       <p>
-      The store is FAKE!
+      How Can This Store Be Fake If Our Eyes Are Real?
       </p>
     </div>
   );

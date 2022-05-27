@@ -34,7 +34,6 @@
 
 .hover-shopping-cart {
   background-color: beige;
-  z-index: 9;
   /* position: relative; */
   padding: .4em;
   border: 1px solid gray;
@@ -42,4 +41,8 @@
   height: fit-content;
   position: absolute;
   overflow: scroll;
+  box-shadow: 1px 1px 10px 2px rgba(0,0,0,.8);
+  z-index: 9;
+
+
 }
