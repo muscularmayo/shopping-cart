@@ -1,0 +1,9 @@
+.about-1 {
+  width: 45vh;
+  height: 100%;
+}
+
+.about-1, .about-title {
+  margin-left: 5vh;
+
+}

@@ -20,6 +20,10 @@
 
 }
 
+.shopping-cart-item-content:hover {
+  cursor: pointer;
+}
+
 .priceTotal {
 
   font-size: larger;

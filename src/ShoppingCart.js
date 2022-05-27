@@ -1,5 +1,6 @@
 import './shoppingcart.css';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToShoppingCart, handleInputChange } from './shoppingCartSlice.js'
 
@@ -7,6 +8,7 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const shoppingCart = useSelector(state => state.shoppingCart)
   const numberOfItems = shoppingCart.numberOfItems
+  const navigate = useNavigate();
 
   const handleInput = (event) => {
     console.log(event.target)
@@ -38,11 +40,13 @@ const ShoppingCart = () => {
         Number of items in cart: {numberOfItems}
       </div> */}
       <div className="shopping-cart-catalog">
-        {shoppingCart.shoppingCartArray.map((item) => {
+        {shoppingCart.shoppingCartArray.map((item, index) => {
           return (
             <div className="shopping-cart-item">
-              <img class="shopping-cart-image" src={item.img} alt={item.img}></img>
-              <div>{item.name + ' ' + item.price}</div>
+              <div onClick={() => navigate('/shop/' + (item.id - 1))} className="shopping-cart-item-content">
+                <img class="shopping-cart-image" src={item.img} alt={item.img}></img>
+                <div>{item.name + ' ' + item.price}</div>
+              </div>
               <input min={0} onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
             </div>
           )
