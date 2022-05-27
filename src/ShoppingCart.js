@@ -47,12 +47,12 @@ const ShoppingCart = () => {
                 <img class="shopping-cart-image" src={item.img} alt={item.img}></img>
                 <div>{item.name + ' ' + item.price}</div>
               </div>
-              <input min={0} onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
+              Quantity<input min={0} className="shopping-cart-input" onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
             </div>
           )
         })}
+        <div className="price-total-div">Total ({numberOfItems} items): <span className="priceTotal">{priceTotal}</span></div>
       </div>
-      <div className="price-total-div">Total ({numberOfItems} items): <span className="priceTotal">{priceTotal}</span></div>
     </div>
   );
 }
