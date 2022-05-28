@@ -16,11 +16,11 @@ const RouteSwitch = () => {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path="/shoppingcart" element={<ShoppingCart />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/shop/:id" element={<ExpandedShopItem />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/shopping-cart/shoppingcart" element={<ShoppingCart />} />
+        <Route path="/shopping-cart" element={<Home />} />
+        <Route path="/shopping-cart/shop" element={<Shop />} />
+        <Route path="/shopping-cart/shop/:id" element={<ExpandedShopItem />} />
+        <Route path="/shopping-cart/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   )
