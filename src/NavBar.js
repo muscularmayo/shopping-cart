@@ -15,13 +15,13 @@ const NavBar = () => {
     <div className="header">
       <ul className="nav-bar">
         <li>
-          <Link to="/"><img id="nav-icon" className="fake-icon" src={FakeIcon} alt="store logo" /></Link>
+          <Link to="/shopping-cart"><img id="nav-icon" className="fake-icon" src={FakeIcon} alt="store logo" /></Link>
         </li>
         <li>
-          <Link to="/shop">Shop</Link>
+          <Link to="/shopping-cart/shop">Shop</Link>
         </li>
         <li>
-        <Link to="/shoppingcart"
+        <Link to="/shopping-cart/shoppingcart"
               id="shoppingcart"
               onMouseEnter={e => {
                 setStyle({display: 'block'})
@@ -42,7 +42,7 @@ const NavBar = () => {
         </div>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/shopping-cart/about">About</Link>
         </li>
       </ul>
     </div>
