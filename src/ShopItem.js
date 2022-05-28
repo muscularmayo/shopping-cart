@@ -15,7 +15,7 @@ const ShopItem = (props) => {
 
   return (
     // <div className="shop-item" >
-      <Link className="shop-item" to={'/shop/' + props.index}>
+      <Link className="shop-item" to={'/shopping-cart/shop/' + props.index}>
         <div className="shop-content">
           <div className='img-box'>
             <img className="shop-item-image" src={props.img} alt={props.img}/>

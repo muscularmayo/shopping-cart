@@ -81,7 +81,7 @@ const ExpandedShopItem = (props) => {
       ) : (
         <LoadingScreen />
       )}
-      <button className="back-to-shop" onClick={() => navigate('/shop')}>Back to Shop</button>
+      <button className="back-to-shop" onClick={() => navigate('/shopping-cart/shop')}>Back to Shop</button>
   </div>
   );
 }

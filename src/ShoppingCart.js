@@ -43,7 +43,7 @@ const ShoppingCart = () => {
         {shoppingCart.shoppingCartArray.map((item, index) => {
           return (
             <div className="shopping-cart-item">
-              <div onClick={() => navigate('/shop/' + (item.id - 1))} className="shopping-cart-item-content">
+              <div onClick={() => navigate('/shopping-cart/shop/' + (item.id - 1))} className="shopping-cart-item-content">
                 <img className="shopping-cart-image" src={item.img} alt={item.img}></img>
                 <div className="shopping-title">{item.name}</div>
                 <div className="cart-price item-price">{item.price}</div>

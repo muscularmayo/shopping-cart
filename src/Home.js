@@ -17,7 +17,7 @@ const Home = () => {
           <img className="shop-icon" src={ShopIcon} alt='shop icon'/>
         </span>
       </div>
-      <div id="enter" onClick={() => navigate('/shop')}>
+      <div id="enter" onClick={() => navigate('/shopping-cart/shop')}>
         Enter
       </div>
 
