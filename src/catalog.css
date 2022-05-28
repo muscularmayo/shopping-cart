@@ -9,7 +9,7 @@
 
   margin-top: 1.3vh;
   margin-left: -1px;
-  margin-bottom: 3vh;
+  margin-bottom: 4vh;
   position: relative;
   /* z-index: 7; */
 }
@@ -25,6 +25,7 @@
   font-family: Arial, Helvetica, sans-serif;
   max-width: 240px;
   min-width: 200px;
+
 
 }
 

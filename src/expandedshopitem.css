@@ -19,6 +19,7 @@
   height: 70vh;
   width: 70vh;
   margin: 3vh;
+  object-fit: contain;
 }
 
 .modal-content {

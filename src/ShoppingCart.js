@@ -44,10 +44,13 @@ const ShoppingCart = () => {
           return (
             <div className="shopping-cart-item">
               <div onClick={() => navigate('/shop/' + (item.id - 1))} className="shopping-cart-item-content">
-                <img class="shopping-cart-image" src={item.img} alt={item.img}></img>
-                <div>{item.name + ' ' + item.price}</div>
+                <img className="shopping-cart-image" src={item.img} alt={item.img}></img>
+                <div className="shopping-title">{item.name}</div>
+                <div className="cart-price item-price">{item.price}</div>
               </div>
-              Quantity<input min={0} className="shopping-cart-input" onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
+              <div className="quantity-input">
+                Quantity: <input min={0} className="shopping-cart-input" onChange={handleInput} id={item.id} type="number" value={item.quantity}/>
+              </div>
             </div>
           )
         })}
