@@ -76,10 +76,10 @@ const StarRating = (props) => {
              setStyle({display: 'block'})
              setOtherStyle({display: 'none'})
            }}
-           onMouseLeave={e=> {
-             setStyle({display: 'none'})
-             setOtherStyle({display: 'block'})
-           }}
+          //  onMouseLeave={e=> {
+          //    setStyle({display: 'none'})
+          //    setOtherStyle({display: 'block'})
+          //  }}
       >
         {hoverProperty}
         <div style={otherStyle}>
