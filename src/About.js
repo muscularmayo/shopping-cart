@@ -21,7 +21,7 @@ const About = () => {
             while also using a fake store api to pull information and simulate a real store environment. This store is my baby, and
             I hope you enjoy it as much as I enjoyed making it :)  (hopefully more)
             <p>
-            The hardest part was probably figuring out how to manage state in a bunch of different components, and trying to keep it generally
+            The hardest part was probably figuring out how to manage and pass state through a bunch of different components, and trying to keep it generally
             clean throughout that process. The categories filter was kinda cool too, had to get a bit creative for that.
             </p>
           </p>

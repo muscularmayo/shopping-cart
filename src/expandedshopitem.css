@@ -31,9 +31,10 @@
 }
 
 .back-to-shop {
-  position: absolute;
+  position: fixed;
   left: 2%;
-  bottom: 10%;
+  bottom:7%;
+
 }
 
 .expanded-item-rating {
