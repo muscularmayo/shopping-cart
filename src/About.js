@@ -14,7 +14,7 @@ const About = () => {
         I first started this project to get a bit of practice doing stuff with React-Router-Dom.
         Along the way I realized I would have much more fun, and learn much more, if I used React-Redux to help manage state,
         while also using a fake store api to pull information and simulate a real store environment. This store is my baby, and
-        I hope you enjoy it as much as I enjoyed making it :)
+        I hope you enjoy it as much as I enjoyed making it :)  (hopefully more)
       </p>
     </div>
   );

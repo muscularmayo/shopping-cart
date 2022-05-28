@@ -4,7 +4,7 @@
 }
 
 .star-rating {
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: row;
   bottom: 0px;

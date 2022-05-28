@@ -9,7 +9,7 @@ const StarRating = (props) => {
   // rating={props.rating.rate} reviews={props.rating.count}
 
   const [style, setStyle] = useState({display: 'none'})
-
+  const [otherStyle, setOtherStyle] = useState({display: 'block'})
 
   function roundHalf (num) {
     return (Math.floor(num*2)/2).toFixed(1);
@@ -39,7 +39,17 @@ const StarRating = (props) => {
     )
   })
   const hoverProperty = (
-    <div className="hover-rating" style={style}>
+    <div className="hover-rating"
+         style={style}
+         onMouseEnter={e => {
+           setStyle({display: 'block'})
+           setOtherStyle({display: 'none'})
+         }}
+         onMouseLeave={e=> {
+           setStyle({display: 'none'})
+           setOtherStyle({display: 'block'})
+         }}
+    >
       {props.rating} stars - {props.reviews} reviews
     </div>
   )
@@ -48,42 +58,25 @@ const StarRating = (props) => {
     <div className="star-rating"
          onMouseEnter={e => {
            setStyle({display: 'block'})
+           setOtherStyle({display: 'none'})
          }}
-         onMouseLeave={e=> {
-           setStyle({display: 'none'})
-         }}
+        //  onMouseLeave={e=> {
+        //    setStyle({display: 'none'})
+        //    setOtherStyle({display: 'block'})
+        //  }}
     >
       {hoverProperty}
-      {starDisplay}
+      <div style={otherStyle}>
+        {starDisplay}
+      </div>
     </div>
   )
 
 
 
 }
-
 /*
-<li>
-        <Link to="/shoppingcart"
-              id="shoppingcart"
-              onMouseEnter={e => {
-                setStyle({display: 'block'})
-              }}
-              onMouseLeave={e => {
-                setStyle({display: 'none'})
-              }}>Shopping Cart ({numberOfItems})
-        </Link>
-        <div id="hover-cart"
-          style={style}
-          onMouseEnter={e => {
-                setStyle({display: 'block'})
-              }}
-            onMouseLeave={e => {
-              setStyle({display: 'none'})
-            }}>
-          <HoverShoppingCart/>
-        </div>
-        </li>
+
 */
 
 export default StarRating;
