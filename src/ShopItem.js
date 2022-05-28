@@ -1,6 +1,6 @@
 import './shopitem.css';
 import { Link } from 'react-router-dom'
-import Star from './Star.js'
+import StarRating from './StarRating.js'
 
 const ShopItem = (props) => {
   let title = props.name;
@@ -9,16 +9,6 @@ const ShopItem = (props) => {
     title = title.slice(0, parenthIndex)
   }
 
-  function roundHalf (num) {
-    return (Math.floor(num*2)/2).toFixed(1);
-  }
-
-  function starRating (num) {
-    const roundedHalfRating = roundHalf(props.rating);
-    for (let i = 0; i < 5; i++) {
-
-    }
-  }
 
 
 
@@ -37,8 +27,13 @@ const ShopItem = (props) => {
             {props.price}
           </div>
           <div className="item-rating">
+            <StarRating rating={props.rating.rate} reviews={props.rating.count} />
             {/* {props.rating.rate} stars ({props.rating.count} reviews) */}
+            {/* <Star type="1"/>
+            <Star type="1"/>
+            <Star type="1"/>
             <Star type="0.5"/>
+            <Star type="0"/> */}
           </div>
         </div>
     </Link>

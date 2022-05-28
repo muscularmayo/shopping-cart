@@ -62,7 +62,14 @@
 
 .item-rating {
   position: absolute;
+  display: grid;
+  /* flex-direction: row; */
   bottom: 0px;
   text-align: center;
-  padding-bottom: .7rem;
+  padding-bottom: .3rem;
+  padding-left: 1rem;
+  height: 35px;
+  width: 200px;
+  vertical-align: center;
+  justify-content: center;
 }
