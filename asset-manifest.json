@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.5ccf5eed.css",
+    "main.js": "/shopping-cart/static/js/main.7a3d02cc.js",
+    "static/media/loadingScreen.gif": "/shopping-cart/static/media/loadingScreen.7942ae585a78c2df4578.gif",
+    "static/media/home-background.jpeg": "/shopping-cart/static/media/home-background.e0561b176adf14e3396c.jpeg",
+    "static/media/shop-icon.png": "/shopping-cart/static/media/shop-icon.f8dadb725dbb0e81b35b.png",
+    "static/media/mac-meme.jpeg": "/shopping-cart/static/media/mac-meme.c71cb393a19d625b98e8.jpeg",
+    "static/media/shoppingCartIcon.png": "/shopping-cart/static/media/shoppingCartIcon.dd02a2d48c10c55f7668.png",
+    "static/media/fake-icon.png": "/shopping-cart/static/media/fake-icon.4003f7de593c95abce91.png",
+    "static/media/ransom-webfont.woff": "/shopping-cart/static/media/ransom-webfont.6aa5b95ec4e22dbcb824.woff",
+    "static/media/ransom-webfont.woff2": "/shopping-cart/static/media/ransom-webfont.368bedff08db7400bbf4.woff2",
+    "static/media/loading.gif": "/shopping-cart/static/media/loading.a7c2649fa8d8f10e6463.gif",
+    "index.html": "/shopping-cart/index.html",
+    "main.5ccf5eed.css.map": "/shopping-cart/static/css/main.5ccf5eed.css.map",
+    "main.7a3d02cc.js.map": "/shopping-cart/static/js/main.7a3d02cc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ccf5eed.css",
+    "static/js/main.7a3d02cc.js"
+  ]
+}
