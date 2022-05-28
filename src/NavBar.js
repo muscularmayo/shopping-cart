@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import HoverShoppingCart from './HoverShoppingCart.js'
 import FakeIcon from './fake-icon.png'
+import ShoppingCartIcon from './shoppingCartIcon.png'
 
 
 const NavBar = () => {
@@ -27,7 +28,7 @@ const NavBar = () => {
               }}
               onMouseLeave={e => {
                 setStyle({display: 'none'})
-              }}>Shopping Cart ({numberOfItems})
+              }}>Cart <span id="numberOfItems">({numberOfItems})</span>
         </Link>
         <div id="hover-cart"
           style={style}

@@ -35,3 +35,15 @@
   left: 2%;
   bottom: 10%;
 }
+
+.expanded-item-rating {
+  padding-top: 1rem;
+  padding-bottom: .7rem;
+  font-size: smaller;
+}
+
+.expanded-item-price {
+  font-size: larger;
+
+  padding-bottom: 1rem;
+}

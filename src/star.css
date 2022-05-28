@@ -30,11 +30,13 @@
   z-index: 9;
   font-size: x-small;
   position: absolute;
+  height: 40px;
   bottom: 0px;
   padding-bottom: .4rem;
   padding-left: 2rem;
   height: 1em;
   width: 1em;
+  color: black;
 }
 
 /*

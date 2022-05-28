@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import LoadingScreen from './LoadingScreen.js';
-import store from './store.js'
 import { addToShoppingCart } from './shoppingCartSlice.js'
+import StarRating from './StarRating.js'
 
 const ExpandedShopItem = (props) => {
   const id = Number(useParams().id)
@@ -69,7 +69,8 @@ const ExpandedShopItem = (props) => {
               {shopItem.description}
             </div>
             <div className="expanded-item-rating">
-              {shopItem.rating.rate + ' stars with ' + shopItem.rating.count + ' reviews.'}
+              {/* {shopItem.rating.rate + ' stars with ' + shopItem.rating.count + ' reviews.'} */}
+              <StarRating onHover='false' rating={shopItem.rating.rate} reviews={shopItem.rating.count}/>
             </div>
             <button onClick={() => addToReduxCart()}>Add to Cart</button>
 

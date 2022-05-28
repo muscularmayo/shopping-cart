@@ -41,6 +41,8 @@ const StarRating = (props) => {
   const hoverProperty = (
     <div className="hover-rating"
          style={style}
+         height="40px"
+         width="220px"
          onMouseEnter={e => {
            setStyle({display: 'block'})
            setOtherStyle({display: 'none'})
@@ -54,23 +56,40 @@ const StarRating = (props) => {
     </div>
   )
 
-  return (
-    <div className="star-rating"
-         onMouseEnter={e => {
-           setStyle({display: 'block'})
-           setOtherStyle({display: 'none'})
-         }}
-        //  onMouseLeave={e=> {
-        //    setStyle({display: 'none'})
-        //    setOtherStyle({display: 'block'})
-        //  }}
-    >
-      {hoverProperty}
-      <div style={otherStyle}>
-        {starDisplay}
-      </div>
+  const ratingProperty = (
+    <div className="hover-rating">
+      {props.rating} stars - {props.reviews} reviews
     </div>
   )
+
+  if (props.onHover === 'false') {
+    return (
+      <div className="star-rating">
+        {starDisplay}
+        {ratingProperty}
+      </div>
+    )
+  } else {
+    return (
+      <div className="star-rating"
+           onMouseEnter={e => {
+             setStyle({display: 'block'})
+             setOtherStyle({display: 'none'})
+           }}
+           onMouseLeave={e=> {
+             setStyle({display: 'none'})
+             setOtherStyle({display: 'block'})
+           }}
+      >
+        {hoverProperty}
+        <div style={otherStyle}>
+          {starDisplay}
+        </div>
+      </div>
+    )
+  }
+
+
 
 
 

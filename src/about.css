@@ -3,7 +3,37 @@
   height: 100%;
 }
 
+.about>h1 {
+  margin-left: 4vh;
+}
+
 .about-1, .about-title {
   margin-left: 5vh;
 
+}
+
+#mac-meme {
+  margin-left: 10vh;
+  margin-bottom: 5vh;
+}
+
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#github-icon {
+  height: 12vh;
+  width: 12vh;
+  object-fit: contain;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  margin-left: 40%;
+}
+
+#github-icon:hover {
+  color: red;
 }
