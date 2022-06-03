@@ -15,6 +15,7 @@ const ExpandedShopItem = (props) => {
 
   const [shopItem, setShopItem] = useState(shopItemObject)
   const [loading, setLoading] = useState(true)
+  const [showAdded, setShowAdded] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -44,10 +45,25 @@ const ExpandedShopItem = (props) => {
   const addToReduxCart = () => {
     // console.log(shopItem)
     dispatch(addToShoppingCart(shopItem))
+    setShowAdded(true)
+    setTimeout(() => {
+      setShowAdded(false)
+    }, 4000)
+
     // reduxCart.push(shopItem)
     // addToShoppingCart(shopItem)
     // console.log('reduxCart after button', reduxCart)
   }
+
+  // const addedComponent = () => {
+  //   return (
+  //     <div>added</div>
+  //   )
+  // }
+
+  // const timedElementAdded = () => {
+
+  // }
 
 
 
@@ -73,6 +89,9 @@ const ExpandedShopItem = (props) => {
               <StarRating onHover='false' rating={shopItem.rating.rate} reviews={shopItem.rating.count}/>
             </div>
             <button onClick={() => addToReduxCart()}>Add to Cart</button>
+            {showAdded === true ? (
+              <div className="elementToFadeInAndOut">Added to cart!</div>
+            ) : (<div display="none"></div>)}
 
           </div>
 
